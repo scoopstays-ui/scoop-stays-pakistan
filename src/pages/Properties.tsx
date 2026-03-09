@@ -51,10 +51,28 @@ const Properties = () => {
 
           {/* Filters */}
           <div className="mb-8">
-            <Button variant="outline" onClick={() => setShowFilters(!showFilters)} className="mb-4">
-              <SlidersHorizontal className="w-4 h-4 mr-2" /> Filters
-              {hasFilters && <span className="ml-2 bg-accent text-accent-foreground text-xs rounded-full w-5 h-5 flex items-center justify-center">!</span>}
-            </Button>
+            <div className="flex items-center gap-2 mb-4">
+              <Button variant="outline" onClick={() => setShowFilters(!showFilters)}>
+                <SlidersHorizontal className="w-4 h-4 mr-2" /> Filters
+                {hasFilters && <span className="ml-2 bg-accent text-accent-foreground text-xs rounded-full w-5 h-5 flex items-center justify-center">!</span>}
+              </Button>
+              <div className="ml-auto flex gap-1 bg-muted rounded-lg p-1">
+                <Button
+                  variant={viewMode === "grid" ? "default" : "ghost"}
+                  size="sm"
+                  onClick={() => setViewMode("grid")}
+                >
+                  <LayoutGrid className="w-4 h-4" />
+                </Button>
+                <Button
+                  variant={viewMode === "map" ? "default" : "ghost"}
+                  size="sm"
+                  onClick={() => setViewMode("map")}
+                >
+                  <Map className="w-4 h-4" />
+                </Button>
+              </div>
+            </div>
 
             {showFilters && (
               <motion.div
