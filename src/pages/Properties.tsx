@@ -18,6 +18,7 @@ const Properties = () => {
   const [typeFilter, setTypeFilter] = useState("");
   const [guestsFilter, setGuestsFilter] = useState(initialGuests);
   const [showFilters, setShowFilters] = useState(false);
+  const [viewMode, setViewMode] = useState<"grid" | "map">("grid");
 
   const filtered = useMemo(() => {
     return properties.filter((p) => {
