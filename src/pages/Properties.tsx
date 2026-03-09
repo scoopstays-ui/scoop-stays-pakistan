@@ -1,10 +1,11 @@
 import { useState, useMemo } from "react";
 import { useSearchParams } from "react-router-dom";
-import { SlidersHorizontal, X } from "lucide-react";
+import { SlidersHorizontal, X, LayoutGrid, Map } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import PropertyCard from "@/components/PropertyCard";
+import PropertyMap from "@/components/PropertyMap";
 import { properties, cities, propertyTypes } from "@/data/properties";
 import { motion } from "framer-motion";
 
@@ -17,6 +18,7 @@ const Properties = () => {
   const [typeFilter, setTypeFilter] = useState("");
   const [guestsFilter, setGuestsFilter] = useState(initialGuests);
   const [showFilters, setShowFilters] = useState(false);
+  const [viewMode, setViewMode] = useState<"grid" | "map">("grid");
 
   const filtered = useMemo(() => {
     return properties.filter((p) => {
@@ -49,10 +51,28 @@ const Properties = () => {
 
           {/* Filters */}
           <div className="mb-8">
-            <Button variant="outline" onClick={() => setShowFilters(!showFilters)} className="mb-4">
-              <SlidersHorizontal className="w-4 h-4 mr-2" /> Filters
-              {hasFilters && <span className="ml-2 bg-accent text-accent-foreground text-xs rounded-full w-5 h-5 flex items-center justify-center">!</span>}
-            </Button>
+            <div className="flex items-center gap-2 mb-4">
+              <Button variant="outline" onClick={() => setShowFilters(!showFilters)}>
+                <SlidersHorizontal className="w-4 h-4 mr-2" /> Filters
+                {hasFilters && <span className="ml-2 bg-accent text-accent-foreground text-xs rounded-full w-5 h-5 flex items-center justify-center">!</span>}
+              </Button>
+              <div className="ml-auto flex gap-1 bg-muted rounded-lg p-1">
+                <Button
+                  variant={viewMode === "grid" ? "default" : "ghost"}
+                  size="sm"
+                  onClick={() => setViewMode("grid")}
+                >
+                  <LayoutGrid className="w-4 h-4" />
+                </Button>
+                <Button
+                  variant={viewMode === "map" ? "default" : "ghost"}
+                  size="sm"
+                  onClick={() => setViewMode("map")}
+                >
+                  <Map className="w-4 h-4" />
+                </Button>
+              </div>
+            </div>
 
             {showFilters && (
               <motion.div
@@ -108,12 +128,15 @@ const Properties = () => {
             )}
           </div>
 
-          {/* Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filtered.map((property, i) => (
-              <PropertyCard key={property.id} property={property} index={i} />
-            ))}
-          </div>
+          {viewMode === "grid" ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {filtered.map((property, i) => (
+                <PropertyCard key={property.id} property={property} index={i} />
+              ))}
+            </div>
+          ) : (
+            <PropertyMap properties={filtered} />
+          )}
 
           {filtered.length === 0 && (
             <div className="text-center py-20">
