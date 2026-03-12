@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
-import { Star, MapPin, Users } from "lucide-react";
+import { Star, MapPin, Users, MessageSquare } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import type { Property } from "@/data/properties";
+import { whatsappPropertyUrl } from "@/data/properties";
 
 interface PropertyCardProps {
   property: Property;
@@ -47,13 +48,19 @@ const PropertyCard = ({ property, index = 0 }: PropertyCardProps) => {
           Up to {property.guests} guests · {property.bedrooms} bed · {property.bathrooms} bath
         </div>
 
-        <div className="flex items-center justify-between">
-          <div>
-            <span className="text-lg font-bold text-card-foreground">PKR {property.price.toLocaleString()}</span>
-            <span className="text-muted-foreground text-sm"> / night</span>
-          </div>
-          <Button variant="accent" size="sm" asChild>
+        <div className="mb-4">
+          <span className="text-lg font-bold text-card-foreground">PKR {property.price.toLocaleString()}</span>
+          <span className="text-muted-foreground text-sm"> / night</span>
+        </div>
+
+        <div className="flex gap-2">
+          <Button variant="accent" size="sm" className="flex-1" asChild>
             <Link to={`/property/${property.id}`}>View Details</Link>
+          </Button>
+          <Button variant="outline" size="sm" className="flex-1" asChild>
+            <a href={whatsappPropertyUrl(property.name)} target="_blank" rel="noopener noreferrer">
+              <MessageSquare className="w-3.5 h-3.5 mr-1" /> WhatsApp
+            </a>
           </Button>
         </div>
       </div>
