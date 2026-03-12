@@ -4,6 +4,13 @@ import { Menu, X, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
 
+const navLinks = [
+  { to: "/", label: "Home" },
+  { to: "/properties", label: "Properties" },
+  { to: "/about", label: "About Us" },
+  { to: "/contact", label: "Contact" },
+];
+
 const Header = () => {
   const [open, setOpen] = useState(false);
   const location = useLocation();
@@ -17,11 +24,7 @@ const Header = () => {
         </Link>
 
         <nav className="hidden md:flex items-center gap-8">
-          {[
-            { to: "/", label: "Home" },
-            { to: "/properties", label: "Properties" },
-            { to: "/contact", label: "Contact" },
-          ].map((link) => (
+          {navLinks.map((link) => (
             <Link
               key={link.to}
               to={link.to}
@@ -56,11 +59,7 @@ const Header = () => {
             className="md:hidden bg-primary border-t border-primary-foreground/10"
           >
             <div className="container mx-auto py-4 px-4 flex flex-col gap-4">
-              {[
-                { to: "/", label: "Home" },
-                { to: "/properties", label: "Properties" },
-                { to: "/contact", label: "Contact" },
-              ].map((link) => (
+              {navLinks.map((link) => (
                 <Link
                   key={link.to}
                   to={link.to}

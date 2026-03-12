@@ -1,11 +1,11 @@
 import { useParams, Link } from "react-router-dom";
 import { useState } from "react";
-import { Star, MapPin, Users, Bed, Bath, ChevronLeft, ExternalLink, Check } from "lucide-react";
+import { Star, MapPin, Users, Bed, Bath, ChevronLeft, ExternalLink, Check, MessageSquare } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Calendar } from "@/components/ui/calendar";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { properties } from "@/data/properties";
+import { properties, whatsappPropertyUrl } from "@/data/properties";
 import { motion } from "framer-motion";
 
 const PropertyDetail = () => {
@@ -41,7 +41,6 @@ const PropertyDetail = () => {
 
       <div className="pt-24 pb-20">
         <div className="container mx-auto px-4 lg:px-8">
-          {/* Back */}
           <Link to="/properties" className="inline-flex items-center gap-1 text-muted-foreground hover:text-accent transition-colors text-sm mb-6">
             <ChevronLeft className="w-4 h-4" /> Back to Properties
           </Link>
@@ -83,7 +82,6 @@ const PropertyDetail = () => {
 
                 <p className="text-foreground/80 leading-relaxed mb-8">{property.description}</p>
 
-                {/* Amenities */}
                 <h2 className="font-display text-2xl font-semibold text-foreground mb-4">Amenities</h2>
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-3 mb-10">
                   {property.amenities.map((a) => (
@@ -93,7 +91,6 @@ const PropertyDetail = () => {
                   ))}
                 </div>
 
-                {/* Reviews */}
                 <h2 className="font-display text-2xl font-semibold text-foreground mb-4">Guest Reviews</h2>
                 <div className="space-y-4 mb-10">
                   {reviews.map((review, i) => (
@@ -136,8 +133,10 @@ const PropertyDetail = () => {
                   disabled={(date) => date < new Date()}
                 />
 
-                <Button variant="accent" className="w-full mb-3" size="lg">
-                  Book Directly
+                <Button variant="accent" className="w-full mb-3" size="lg" asChild>
+                  <a href={whatsappPropertyUrl(property.name)} target="_blank" rel="noopener noreferrer">
+                    <MessageSquare className="w-4 h-4 mr-2" /> Book via WhatsApp
+                  </a>
                 </Button>
 
                 {property.airbnbUrl && (

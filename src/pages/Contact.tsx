@@ -5,6 +5,13 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { motion } from "framer-motion";
 import { toast } from "sonner";
+import { WHATSAPP_URL } from "@/data/properties";
+
+const socialLinks = [
+  { name: "Facebook", url: "https://www.facebook.com/share/1HjSA4nFEB/?mibextid=wwXIfr" },
+  { name: "Instagram", url: "https://www.instagram.com/scoopstays?igsh=M24xajZjcnZvcXh0&utm_source=qr" },
+  { name: "Pinterest", url: "https://pin.it/6gxM2d8Op" },
+];
 
 const Contact = () => {
   const [form, setForm] = useState({ name: "", email: "", phone: "", message: "" });
@@ -35,7 +42,7 @@ const Contact = () => {
               </p>
 
               <div className="space-y-6">
-                <a href="https://wa.me/923165648659" className="flex items-center gap-4 text-foreground hover:text-accent transition-colors">
+                <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 text-foreground hover:text-accent transition-colors">
                   <div className="w-12 h-12 rounded-full bg-accent/10 flex items-center justify-center shrink-0">
                     <Phone className="w-5 h-5 text-accent" />
                   </div>
@@ -44,13 +51,13 @@ const Contact = () => {
                     <p className="font-medium">+92 316 5648659</p>
                   </div>
                 </a>
-                <a href="mailto:info@scoopstays.com" className="flex items-center gap-4 text-foreground hover:text-accent transition-colors">
+                <a href="mailto:scoopstays@gmail.com" className="flex items-center gap-4 text-foreground hover:text-accent transition-colors">
                   <div className="w-12 h-12 rounded-full bg-accent/10 flex items-center justify-center shrink-0">
                     <Mail className="w-5 h-5 text-accent" />
                   </div>
                   <div>
                     <p className="text-sm text-muted-foreground">Email</p>
-                    <p className="font-medium">info@scoopstays.com</p>
+                    <p className="font-medium">scoopstays@gmail.com</p>
                   </div>
                 </a>
                 <div className="flex items-center gap-4">
@@ -61,6 +68,24 @@ const Contact = () => {
                     <p className="text-sm text-muted-foreground">Location</p>
                     <p className="font-medium text-foreground">Pakistan</p>
                   </div>
+                </div>
+              </div>
+
+              {/* Social Links */}
+              <div className="mt-8">
+                <p className="text-sm text-muted-foreground mb-3">Follow us on social media</p>
+                <div className="flex gap-3">
+                  {socialLinks.map((social) => (
+                    <a
+                      key={social.name}
+                      href={social.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="px-4 py-2 rounded-lg bg-accent/10 text-accent hover:bg-accent hover:text-accent-foreground transition-colors text-sm font-medium"
+                    >
+                      {social.name}
+                    </a>
+                  ))}
                 </div>
               </div>
             </motion.div>
