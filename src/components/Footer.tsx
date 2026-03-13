@@ -65,6 +65,7 @@ const Footer = () => {
                 { to: "/properties", label: "Properties" },
                 { to: "/about", label: "About Us" },
                 { to: "/contact", label: "Contact" },
+                { to: "/sitemap", label: "All Locations" },
               ].map((link) => (
                 <Link key={link.to} to={link.to} className="text-primary-foreground/60 hover:text-accent transition-colors text-sm">
                   {link.label}
