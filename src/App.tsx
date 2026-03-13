@@ -29,6 +29,7 @@ const App = () => (
             <Route path="/property/:id" element={<PropertyDetail />} />
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/sitemap" element={<Sitemap />} />
             <Route path="/:slug" element={<SeoLanding />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
