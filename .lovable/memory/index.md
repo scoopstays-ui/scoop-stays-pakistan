@@ -1,4 +1,7 @@
-ScoopStays design system, architecture, and key decisions
+# Memory: index.md
+Updated: today
+
+# ScoopStays Design System
 
 ## Brand Colors (HSL)
 - Primary (Teal): 189 72% 21% (#0F4C5C)
@@ -15,12 +18,9 @@ ScoopStays design system, architecture, and key decisions
 - Button has custom `accent` variant
 
 ## Architecture
-- Mock data in `src/data/properties.ts` (12 properties across Pakistan)
-- Pages: Index, Properties, PropertyDetail, About, Contact
-- Shared: Header, Footer, PropertyCard, HeroSearch, PropertyMap, WhatsAppButton
-- WhatsApp URL constants exported from properties.ts
-- Social links: Facebook, Instagram, Pinterest
-- Email: scoopstays@gmail.com
-
-## Locations Served
-Murree, Hunza, Lahore, Karachi, Islamabad, Rawalpindi, Bahria Town Lahore/Islamabad, DHA Lahore/Karachi, Abbottabad, Khara Gali
+- Mock data in `src/data/properties.ts`
+- SEO data in `src/data/seo-pages.ts` (12 locations × 12 property types = 144 pages)
+- Pages: Index, Properties, PropertyDetail, Contact, About, SeoLanding, Sitemap
+- Shared: Header, Footer, PropertyCard, HeroSearch, PropertyMap
+- Dynamic SEO route: `/:slug` maps to SeoLanding page
+- react-helmet-async for meta tags
