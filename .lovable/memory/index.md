@@ -1,7 +1,4 @@
-# Memory: index.md
-Updated: today
-
-# ScoopStays Design System
+# ScoopStays Design System & Architecture
 
 ## Brand Colors (HSL)
 - Primary (Teal): 189 72% 21% (#0F4C5C)
@@ -18,9 +15,8 @@ Updated: today
 - Button has custom `accent` variant
 
 ## Architecture
-- Mock data in `src/data/properties.ts`
-- SEO data in `src/data/seo-pages.ts` (12 locations × 12 property types = 144 pages)
-- Pages: Index, Properties, PropertyDetail, Contact, About, SeoLanding, Sitemap
-- Shared: Header, Footer, PropertyCard, HeroSearch, PropertyMap
-- Dynamic SEO route: `/:slug` maps to SeoLanding page
-- react-helmet-async for meta tags
+- Mock data in `src/data/properties.ts`, `src/data/deals.ts`, `src/data/blog-posts.ts`, `src/data/seo-pages.ts`
+- Pages: Index, Properties, PropertyDetail, Contact, About, MapSearch, ListYourProperty, Blog, BlogPost, SeoLanding, Sitemap
+- Shared: Header, Footer, PropertyCard, HeroSearch, WhatsAppButton, WhatsAppBookingForm, PropertyMap
+- SEO: 144+ programmatic pages via seo-pages.ts, blog articles, destination pages
+- WhatsApp number: +923165648659

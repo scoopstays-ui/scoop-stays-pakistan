@@ -12,6 +12,10 @@ import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 import SeoLanding from "./pages/SeoLanding";
 import Sitemap from "./pages/Sitemap";
+import MapSearch from "./pages/MapSearch";
+import ListYourProperty from "./pages/ListYourProperty";
+import Blog from "./pages/Blog";
+import BlogPost from "./pages/BlogPost";
 import WhatsAppButton from "./components/WhatsAppButton";
 
 const queryClient = new QueryClient();
@@ -30,6 +34,10 @@ const App = () => (
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/sitemap" element={<Sitemap />} />
+            <Route path="/map-search" element={<MapSearch />} />
+            <Route path="/list-your-property" element={<ListYourProperty />} />
+            <Route path="/blog" element={<Blog />} />
+            <Route path="/blog/:slug" element={<BlogPost />} />
             <Route path="/:slug" element={<SeoLanding />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
