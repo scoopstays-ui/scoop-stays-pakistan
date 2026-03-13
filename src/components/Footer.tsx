@@ -78,9 +78,14 @@ const Footer = () => {
           <div>
             <h4 className="font-display text-lg font-semibold mb-4">Locations in Pakistan</h4>
             <div className="flex flex-col gap-2">
-              {locations.slice(0, 8).map((loc) => (
-                <span key={loc} className="text-primary-foreground/60 text-sm">{loc}</span>
-              ))}
+              {locations.slice(0, 8).map((loc) => {
+                const locSlug = loc.toLowerCase().replace(/\s+/g, "-");
+                return (
+                  <Link key={loc} to={`/${locSlug}-vacation-rentals`} className="text-primary-foreground/60 hover:text-accent transition-colors text-sm">
+                    {loc}
+                  </Link>
+                );
+              })}
             </div>
           </div>
 
