@@ -301,6 +301,25 @@ export const properties: Property[] = [
     lat: 31.37,
     lng: 74.18,
   },
+  {
+    id: "batman-theme-apartment-bahria-town-lahore",
+    name: "Luxury Batman Theme 1BHR Stay (Batman Suite) | Premium Apartment in Bahria Town Lahore",
+    city: "Bahria Town Lahore",
+    province: "Punjab",
+    price: 9000,
+    rating: 4.9,
+    reviews: 8,
+    guests: 3,
+    bedrooms: 1,
+    bathrooms: 1,
+    image: batman1,
+    images: [batman1, batman2, batman3, batman4, batman5, batman6, batman7, batman8, batman9, batman10],
+    type: "Apartment",
+    amenities: ["High-speed WiFi", "Hot & Cold Water", "Air Conditioning", "Smart TV", "Comfortable Bed", "Fully Furnished", "Kitchen Essentials", "Clean Bathroom", "Secure Building", "Free Parking"],
+    description: "Experience a unique stay in our Luxury Batman Theme 1BHR Stay (Batman Suite) located in the prime area of Bahria Town Lahore. This stylish themed apartment is perfect for couples, travelers, or small families looking for a premium short-term stay experience. The suite features a Batman inspired interior design, creating a fun and memorable atmosphere for guests who love unique themed accommodations. Located in Nishtar Commercial, Bahria Town Lahore, the apartment offers easy access to restaurants, cafes, shopping areas, and popular attractions in Bahria Town. Enjoy comfort, privacy, and modern facilities during your stay with ScoopStays.",
+    lat: 31.37,
+    lng: 74.18,
+  },
 ];
 
 export const cities = [...new Set(properties.map((p) => p.city))];
