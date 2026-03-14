@@ -47,6 +47,7 @@ export interface Property {
   airbnbUrl?: string;
   lat: number;
   lng: number;
+  googleMapsEmbed?: string;
 }
 
 export const WHATSAPP_URL = "https://wa.me/923165648659";
