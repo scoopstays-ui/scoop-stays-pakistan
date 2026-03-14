@@ -325,6 +325,26 @@ export const properties: Property[] = [
     lat: 31.37,
     lng: 74.18,
   },
+  {
+    id: "pine-tree-house-khara-gali-farmhouse",
+    name: "Pine Tree House | 2 Bedroom Farmhouse in 1 Kanal",
+    city: "Khara Gali",
+    province: "KPK",
+    price: 0,
+    rating: 4.9,
+    reviews: 5,
+    guests: 5,
+    bedrooms: 2,
+    bathrooms: 1,
+    image: property1,
+    images: [property1, property2, property3, property4, property5, property6, property7, property8, property9, property10],
+    type: "Farmhouse",
+    amenities: ["High-speed WiFi", "Hot & Cold Water", "Comfortable Bedrooms", "Spacious Living Area", "Kitchen Facilities", "Beautiful Outdoor Space", "Parking Space", "Peaceful Surroundings"],
+    description: "Escape to nature and enjoy a peaceful stay at Pine Tree House, a beautiful 2-bedroom farmhouse built on a spacious 1 kanal property surrounded by lush greenery and scenic views. This farmhouse is perfect for families, small groups, or couples looking for a relaxing getaway near Murree and Khara Gali. Guests can enjoy fresh mountain air, privacy, and a comfortable stay away from city noise while still being close to nearby tourist attractions. The farmhouse provides a cozy environment with modern facilities, making it ideal for weekend trips, family vacations, and peaceful retreats.",
+    lat: 33.7549479,
+    lng: 73.4191821,
+    googleMapsEmbed: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3308.5!2d73.4189635!3d33.7549479!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38dfdfad7d0a3463%3A0x325b4d3585f47741!2sPine%20Tree%20House!5e0!3m2!1sen!2s!4v1700000000000",
+  },
 ];
 
 export const cities = [...new Set(properties.map((p) => p.city))];
