@@ -4,6 +4,15 @@ import property3 from "@/assets/property-3.jpg";
 import property4 from "@/assets/property-4.jpg";
 import property5 from "@/assets/property-5.jpg";
 import property6 from "@/assets/property-6.jpg";
+import moneyHeist1 from "@/assets/money-heist-1.jpg";
+import moneyHeist2 from "@/assets/money-heist-2.jpg";
+import moneyHeist3 from "@/assets/money-heist-3.jpg";
+import moneyHeist4 from "@/assets/money-heist-4.jpg";
+import moneyHeist5 from "@/assets/money-heist-5.jpg";
+import moneyHeist6 from "@/assets/money-heist-6.jpg";
+import moneyHeist7 from "@/assets/money-heist-7.jpg";
+import moneyHeist8 from "@/assets/money-heist-8.jpg";
+import moneyHeist9 from "@/assets/money-heist-9.jpg";
 
 export interface Property {
   id: string;
@@ -262,6 +271,25 @@ export const properties: Property[] = [
     description: "A stunning beachfront villa in Karachi overlooking the Arabian Sea. Perfect for celebrations, retreats, and weekend getaways with family.",
     lat: 24.86,
     lng: 67.0,
+  },
+  {
+    id: "money-heist-theme-apartment-bahria-town-lahore",
+    name: "Money Heist Theme 1 Bedroom Apartment | Premium Stay in Bahria Town Lahore",
+    city: "Bahria Town Lahore",
+    province: "Punjab",
+    price: 9000,
+    rating: 4.9,
+    reviews: 12,
+    guests: 3,
+    bedrooms: 1,
+    bathrooms: 1,
+    image: moneyHeist1,
+    images: [moneyHeist1, moneyHeist2, moneyHeist3, moneyHeist4, moneyHeist5, moneyHeist6, moneyHeist7, moneyHeist8, moneyHeist9],
+    type: "Apartment",
+    amenities: ["High-speed WiFi", "Hot & Cold Water", "Air Conditioning", "Smart TV", "Comfortable Bed", "Fully Furnished", "Kitchen Essentials", "Clean Bathroom", "Secure Building", "Free Parking"],
+    description: "Experience a unique stay in our Money Heist themed 1-bedroom apartment located in the prime area of Bahria Town Lahore. This stylish and comfortable apartment is perfect for couples, small families, or business travelers looking for a premium short-term stay. The apartment features modern interiors inspired by the popular Money Heist theme, creating a fun and memorable stay experience. Guests can enjoy a peaceful and secure environment with easy access to restaurants, shopping areas, and major attractions in Bahria Town.",
+    lat: 31.37,
+    lng: 74.18,
   },
 ];
 
