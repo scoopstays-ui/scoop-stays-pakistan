@@ -13,6 +13,16 @@ import moneyHeist6 from "@/assets/money-heist-6.jpg";
 import moneyHeist7 from "@/assets/money-heist-7.jpg";
 import moneyHeist8 from "@/assets/money-heist-8.jpg";
 import moneyHeist9 from "@/assets/money-heist-9.jpg";
+import batman1 from "@/assets/batman-1.jpg";
+import batman2 from "@/assets/batman-2.jpg";
+import batman3 from "@/assets/batman-3.jpg";
+import batman4 from "@/assets/batman-4.jpg";
+import batman5 from "@/assets/batman-5.jpg";
+import batman6 from "@/assets/batman-6.jpg";
+import batman7 from "@/assets/batman-7.jpg";
+import batman8 from "@/assets/batman-8.jpg";
+import batman9 from "@/assets/batman-9.jpg";
+import batman10 from "@/assets/batman-10.jpg";
 
 export interface Property {
   id: string;
