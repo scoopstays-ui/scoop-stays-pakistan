@@ -272,6 +272,25 @@ export const properties: Property[] = [
     lat: 24.86,
     lng: 67.0,
   },
+  {
+    id: "money-heist-theme-apartment-bahria-town-lahore",
+    name: "Money Heist Theme 1 Bedroom Apartment | Premium Stay in Bahria Town Lahore",
+    city: "Bahria Town Lahore",
+    province: "Punjab",
+    price: 9000,
+    rating: 4.9,
+    reviews: 12,
+    guests: 3,
+    bedrooms: 1,
+    bathrooms: 1,
+    image: moneyHeist1,
+    images: [moneyHeist1, moneyHeist2, moneyHeist3, moneyHeist4, moneyHeist5, moneyHeist6, moneyHeist7, moneyHeist8, moneyHeist9],
+    type: "Apartment",
+    amenities: ["High-speed WiFi", "Hot & Cold Water", "Air Conditioning", "Smart TV", "Comfortable Bed", "Fully Furnished", "Kitchen Essentials", "Clean Bathroom", "Secure Building", "Free Parking"],
+    description: "Experience a unique stay in our Money Heist themed 1-bedroom apartment located in the prime area of Bahria Town Lahore. This stylish and comfortable apartment is perfect for couples, small families, or business travelers looking for a premium short-term stay. The apartment features modern interiors inspired by the popular Money Heist theme, creating a fun and memorable stay experience. Guests can enjoy a peaceful and secure environment with easy access to restaurants, shopping areas, and major attractions in Bahria Town.",
+    lat: 31.37,
+    lng: 74.18,
+  },
 ];
 
 export const cities = [...new Set(properties.map((p) => p.city))];
