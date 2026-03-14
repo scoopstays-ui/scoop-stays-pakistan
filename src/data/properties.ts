@@ -4,6 +4,15 @@ import property3 from "@/assets/property-3.jpg";
 import property4 from "@/assets/property-4.jpg";
 import property5 from "@/assets/property-5.jpg";
 import property6 from "@/assets/property-6.jpg";
+import moneyHeist1 from "@/assets/money-heist-1.jpg";
+import moneyHeist2 from "@/assets/money-heist-2.jpg";
+import moneyHeist3 from "@/assets/money-heist-3.jpg";
+import moneyHeist4 from "@/assets/money-heist-4.jpg";
+import moneyHeist5 from "@/assets/money-heist-5.jpg";
+import moneyHeist6 from "@/assets/money-heist-6.jpg";
+import moneyHeist7 from "@/assets/money-heist-7.jpg";
+import moneyHeist8 from "@/assets/money-heist-8.jpg";
+import moneyHeist9 from "@/assets/money-heist-9.jpg";
 
 export interface Property {
   id: string;
