@@ -4,6 +4,10 @@ import property3 from "@/assets/property-3.jpg";
 import property4 from "@/assets/property-4.jpg";
 import property5 from "@/assets/property-5.jpg";
 import property6 from "@/assets/property-6.jpg";
+import property7 from "@/assets/property-7.jpg";
+import property8 from "@/assets/property-8.jpg";
+import property9 from "@/assets/property-9.jpg";
+import property10 from "@/assets/property-10.jpg";
 import moneyHeist1 from "@/assets/money-heist-1.jpg";
 import moneyHeist2 from "@/assets/money-heist-2.jpg";
 import moneyHeist3 from "@/assets/money-heist-3.jpg";
@@ -43,6 +47,7 @@ export interface Property {
   airbnbUrl?: string;
   lat: number;
   lng: number;
+  googleMapsEmbed?: string;
 }
 
 export const WHATSAPP_URL = "https://wa.me/923165648659";
@@ -319,6 +324,26 @@ export const properties: Property[] = [
     description: "Experience a unique stay in our Luxury Batman Theme 1BHR Stay (Batman Suite) located in the prime area of Bahria Town Lahore. This stylish themed apartment is perfect for couples, travelers, or small families looking for a premium short-term stay experience. The suite features a Batman inspired interior design, creating a fun and memorable atmosphere for guests who love unique themed accommodations. Located in Nishtar Commercial, Bahria Town Lahore, the apartment offers easy access to restaurants, cafes, shopping areas, and popular attractions in Bahria Town. Enjoy comfort, privacy, and modern facilities during your stay with ScoopStays.",
     lat: 31.37,
     lng: 74.18,
+  },
+  {
+    id: "pine-tree-house-khara-gali-farmhouse",
+    name: "Pine Tree House | 2 Bedroom Farmhouse in 1 Kanal",
+    city: "Khara Gali",
+    province: "KPK",
+    price: 0,
+    rating: 4.9,
+    reviews: 5,
+    guests: 5,
+    bedrooms: 2,
+    bathrooms: 1,
+    image: property1,
+    images: [property1, property2, property3, property4, property5, property6, property7, property8, property9, property10],
+    type: "Farmhouse",
+    amenities: ["High-speed WiFi", "Hot & Cold Water", "Comfortable Bedrooms", "Spacious Living Area", "Kitchen Facilities", "Beautiful Outdoor Space", "Parking Space", "Peaceful Surroundings"],
+    description: "Escape to nature and enjoy a peaceful stay at Pine Tree House, a beautiful 2-bedroom farmhouse built on a spacious 1 kanal property surrounded by lush greenery and scenic views. This farmhouse is perfect for families, small groups, or couples looking for a relaxing getaway near Murree and Khara Gali. Guests can enjoy fresh mountain air, privacy, and a comfortable stay away from city noise while still being close to nearby tourist attractions. The farmhouse provides a cozy environment with modern facilities, making it ideal for weekend trips, family vacations, and peaceful retreats.",
+    lat: 33.7549479,
+    lng: 73.4191821,
+    googleMapsEmbed: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3308.5!2d73.4189635!3d33.7549479!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38dfdfad7d0a3463%3A0x325b4d3585f47741!2sPine%20Tree%20House!5e0!3m2!1sen!2s!4v1700000000000",
   },
 ];
 

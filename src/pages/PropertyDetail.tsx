@@ -91,6 +91,24 @@ const PropertyDetail = () => {
                   ))}
                 </div>
 
+                {property.googleMapsEmbed && (
+                  <>
+                    <h2 className="font-display text-2xl font-semibold text-foreground mb-4">Location</h2>
+                    <div className="rounded-xl overflow-hidden mb-10 aspect-video">
+                      <iframe
+                        src={property.googleMapsEmbed}
+                        width="100%"
+                        height="100%"
+                        style={{ border: 0 }}
+                        allowFullScreen
+                        loading="lazy"
+                        referrerPolicy="no-referrer-when-downgrade"
+                        title={`${property.name} location`}
+                      />
+                    </div>
+                  </>
+                )}
+
                 <h2 className="font-display text-2xl font-semibold text-foreground mb-4">Guest Reviews</h2>
                 <div className="space-y-4 mb-10">
                   {reviews.map((review, i) => (
