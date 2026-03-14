@@ -13,6 +13,16 @@ import moneyHeist6 from "@/assets/money-heist-6.jpg";
 import moneyHeist7 from "@/assets/money-heist-7.jpg";
 import moneyHeist8 from "@/assets/money-heist-8.jpg";
 import moneyHeist9 from "@/assets/money-heist-9.jpg";
+import batman1 from "@/assets/batman-1.jpg";
+import batman2 from "@/assets/batman-2.jpg";
+import batman3 from "@/assets/batman-3.jpg";
+import batman4 from "@/assets/batman-4.jpg";
+import batman5 from "@/assets/batman-5.jpg";
+import batman6 from "@/assets/batman-6.jpg";
+import batman7 from "@/assets/batman-7.jpg";
+import batman8 from "@/assets/batman-8.jpg";
+import batman9 from "@/assets/batman-9.jpg";
+import batman10 from "@/assets/batman-10.jpg";
 
 export interface Property {
   id: string;
@@ -288,6 +298,25 @@ export const properties: Property[] = [
     type: "Apartment",
     amenities: ["High-speed WiFi", "Hot & Cold Water", "Air Conditioning", "Smart TV", "Comfortable Bed", "Fully Furnished", "Kitchen Essentials", "Clean Bathroom", "Secure Building", "Free Parking"],
     description: "Experience a unique stay in our Money Heist themed 1-bedroom apartment located in the prime area of Bahria Town Lahore. This stylish and comfortable apartment is perfect for couples, small families, or business travelers looking for a premium short-term stay. The apartment features modern interiors inspired by the popular Money Heist theme, creating a fun and memorable stay experience. Guests can enjoy a peaceful and secure environment with easy access to restaurants, shopping areas, and major attractions in Bahria Town.",
+    lat: 31.37,
+    lng: 74.18,
+  },
+  {
+    id: "batman-theme-apartment-bahria-town-lahore",
+    name: "Luxury Batman Theme 1BHR Stay (Batman Suite) | Premium Apartment in Bahria Town Lahore",
+    city: "Bahria Town Lahore",
+    province: "Punjab",
+    price: 9000,
+    rating: 4.9,
+    reviews: 8,
+    guests: 3,
+    bedrooms: 1,
+    bathrooms: 1,
+    image: batman1,
+    images: [batman1, batman2, batman3, batman4, batman5, batman6, batman7, batman8, batman9, batman10],
+    type: "Apartment",
+    amenities: ["High-speed WiFi", "Hot & Cold Water", "Air Conditioning", "Smart TV", "Comfortable Bed", "Fully Furnished", "Kitchen Essentials", "Clean Bathroom", "Secure Building", "Free Parking"],
+    description: "Experience a unique stay in our Luxury Batman Theme 1BHR Stay (Batman Suite) located in the prime area of Bahria Town Lahore. This stylish themed apartment is perfect for couples, travelers, or small families looking for a premium short-term stay experience. The suite features a Batman inspired interior design, creating a fun and memorable atmosphere for guests who love unique themed accommodations. Located in Nishtar Commercial, Bahria Town Lahore, the apartment offers easy access to restaurants, cafes, shopping areas, and popular attractions in Bahria Town. Enjoy comfort, privacy, and modern facilities during your stay with ScoopStays.",
     lat: 31.37,
     lng: 74.18,
   },
