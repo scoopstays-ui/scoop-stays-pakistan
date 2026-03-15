@@ -27,6 +27,15 @@ import batman7 from "@/assets/batman-7.jpg";
 import batman8 from "@/assets/batman-8.jpg";
 import batman9 from "@/assets/batman-9.jpg";
 import batman10 from "@/assets/batman-10.jpg";
+import goldHut1 from "@/assets/gold-hut-1.jpg";
+import goldHut2 from "@/assets/gold-hut-2.jpg";
+import goldHut3 from "@/assets/gold-hut-3.jpg";
+import goldHut4 from "@/assets/gold-hut-4.jpg";
+import goldHut5 from "@/assets/gold-hut-5.jpg";
+import goldHut6 from "@/assets/gold-hut-6.jpg";
+import goldHut7 from "@/assets/gold-hut-7.jpg";
+import goldHut8 from "@/assets/gold-hut-8.jpg";
+import goldHut9 from "@/assets/gold-hut-9.jpg";
 
 export interface Property {
   id: string;
@@ -344,6 +353,26 @@ export const properties: Property[] = [
     lat: 33.7549479,
     lng: 73.4191821,
     googleMapsEmbed: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3308.5!2d73.4189635!3d33.7549479!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38dfdfad7d0a3463%3A0x325b4d3585f47741!2sPine%20Tree%20House!5e0!3m2!1sen!2s!4v1700000000000",
+  },
+  {
+    id: "gold-hut-romantic-wood-clad-mountain-retreat-murree",
+    name: "Romantic Wood-Clad Mountain Retreat (Gold Hut)",
+    city: "Murree",
+    province: "Punjab",
+    price: 26000,
+    rating: 4.9,
+    reviews: 3,
+    guests: 4,
+    bedrooms: 1,
+    bathrooms: 1,
+    image: goldHut1,
+    images: [goldHut1, goldHut2, goldHut3, goldHut4, goldHut5, goldHut6, goldHut7, goldHut8, goldHut9],
+    type: "Cabin",
+    amenities: ["High-speed WiFi", "Hot & Cold Water", "Comfortable Sleeping Area", "Private Bathroom", "Scenic Mountain Surroundings", "Peaceful Environment", "Basic Kitchen Essentials", "Outdoor Sitting Area", "Parking Space", "All Basic Living Facilities"],
+    description: "Escape to a peaceful mountain getaway at the Romantic Wood-Clad Mountain Retreat (Gold Hut) located in the scenic hills near Murree. This beautifully designed wooden cabin offers a cozy and romantic environment surrounded by nature, making it perfect for couples and small families looking for a relaxing escape. Guests can enjoy breathtaking views, fresh mountain air, and a private retreat experience while staying close to Murree's popular attractions. The Gold Hut combines natural wooden architecture with modern comfort, creating a memorable stay experience.",
+    lat: 33.8760278,
+    lng: 73.4480556,
+    googleMapsEmbed: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3300.0!2d73.4454807!3d33.8760278!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzPCsDUyJzMzLjciTiA3M8KwMjYnNTMuMCJF!5e0!3m2!1sen!2s!4v1700000000000",
   },
 ];
 
