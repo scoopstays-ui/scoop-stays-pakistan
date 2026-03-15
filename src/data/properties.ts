@@ -406,6 +406,26 @@ export const properties: Property[] = [
     lng: 73.4480556,
     googleMapsEmbed: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3300.0!2d73.4454807!3d33.8760278!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzPCsDUyJzMzLjciTiA3M8KwMjYnNTMuMCJF!5e0!3m2!1sen!2s!4v1700000000000",
   },
+  {
+    id: "platinum-hut-luxury-modern-mountain-stay-murree",
+    name: "The Luxury & Modern Approach (Platinum Hut)",
+    city: "Murree",
+    province: "Punjab",
+    price: 52500,
+    rating: 4.9,
+    reviews: 2,
+    guests: 8,
+    bedrooms: 1,
+    bathrooms: 1,
+    image: platinumHut1,
+    images: [platinumHut1, platinumHut2, platinumHut3, platinumHut4, platinumHut5, platinumHut6],
+    type: "Cabin",
+    amenities: ["High-speed WiFi", "Hot & Cold Water", "Comfortable Beds", "Private Bathroom", "Scenic Mountain Surroundings", "Outdoor Sitting Area", "Beautiful Natural Views", "Basic Kitchen Essentials", "Parking Space", "All Basic Living Facilities"],
+    description: "Discover premium mountain living at The Luxury & Modern Approach (Platinum Hut) located in the scenic hills near Murree. This stylish and modern hut offers a luxury glamping experience with beautiful natural surroundings. The Platinum Hut is designed with a contemporary aesthetic, providing guests with a comfortable and elegant retreat in the mountains. Perfect for families and groups, the hut accommodates up to 5 adults and 3 kids, making it ideal for memorable vacations, weekend escapes, and relaxing nature stays. Guests can enjoy peaceful surroundings, fresh mountain air, and breathtaking views while staying close to Murree's famous tourist attractions.",
+    lat: 33.8760278,
+    lng: 73.4480556,
+    googleMapsEmbed: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3300.0!2d73.4454807!3d33.8760278!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzPCsDUyJzMzLjciTiA3M8KwMjYnNTMuMCJF!5e0!3m2!1sen!2s!4v1700000000000",
+  },
 ];
 
 export const cities = [...new Set(properties.map((p) => p.city))];
