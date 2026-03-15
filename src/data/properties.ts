@@ -42,6 +42,12 @@ import diamondHut3 from "@/assets/diamond-hut-3.jpg";
 import diamondHut4 from "@/assets/diamond-hut-4.jpg";
 import diamondHut5 from "@/assets/diamond-hut-5.jpg";
 import diamondHut6 from "@/assets/diamond-hut-6.jpg";
+import platinumHut1 from "@/assets/platinum-hut-1.jpg";
+import platinumHut2 from "@/assets/platinum-hut-2.jpg";
+import platinumHut3 from "@/assets/platinum-hut-3.jpg";
+import platinumHut4 from "@/assets/platinum-hut-4.jpg";
+import platinumHut5 from "@/assets/platinum-hut-5.jpg";
+import platinumHut6 from "@/assets/platinum-hut-6.jpg";
 
 export interface Property {
   id: string;
