@@ -27,6 +27,15 @@ import batman7 from "@/assets/batman-7.jpg";
 import batman8 from "@/assets/batman-8.jpg";
 import batman9 from "@/assets/batman-9.jpg";
 import batman10 from "@/assets/batman-10.jpg";
+import goldHut1 from "@/assets/gold-hut-1.jpg";
+import goldHut2 from "@/assets/gold-hut-2.jpg";
+import goldHut3 from "@/assets/gold-hut-3.jpg";
+import goldHut4 from "@/assets/gold-hut-4.jpg";
+import goldHut5 from "@/assets/gold-hut-5.jpg";
+import goldHut6 from "@/assets/gold-hut-6.jpg";
+import goldHut7 from "@/assets/gold-hut-7.jpg";
+import goldHut8 from "@/assets/gold-hut-8.jpg";
+import goldHut9 from "@/assets/gold-hut-9.jpg";
 
 export interface Property {
   id: string;
