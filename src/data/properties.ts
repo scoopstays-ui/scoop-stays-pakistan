@@ -42,6 +42,12 @@ import diamondHut3 from "@/assets/diamond-hut-3.jpg";
 import diamondHut4 from "@/assets/diamond-hut-4.jpg";
 import diamondHut5 from "@/assets/diamond-hut-5.jpg";
 import diamondHut6 from "@/assets/diamond-hut-6.jpg";
+import platinumHut1 from "@/assets/platinum-hut-1.jpg";
+import platinumHut2 from "@/assets/platinum-hut-2.jpg";
+import platinumHut3 from "@/assets/platinum-hut-3.jpg";
+import platinumHut4 from "@/assets/platinum-hut-4.jpg";
+import platinumHut5 from "@/assets/platinum-hut-5.jpg";
+import platinumHut6 from "@/assets/platinum-hut-6.jpg";
 
 export interface Property {
   id: string;
@@ -396,6 +402,26 @@ export const properties: Property[] = [
     type: "Cabin",
     amenities: ["High-speed WiFi", "Hot & Cold Water", "Comfortable Sleeping Area", "Private Bathroom", "Scenic Outdoor Deck", "Mountain Views", "Peaceful Surroundings", "Basic Kitchen Essentials", "Outdoor Sitting Area", "Parking Space", "All Basic Living Facilities"],
     description: "Experience a unique glamping getaway at The Glass Gable – Modern Glamping & Scenic Deck (Diamond Hut) located in the peaceful hills near Murree. This modern glass-style cabin offers a luxury glamping experience surrounded by breathtaking mountain scenery. The Diamond Hut features large glass windows and a scenic outdoor deck, allowing guests to enjoy beautiful nature views and fresh mountain air. Perfect for couples or small families, this retreat combines stylish architecture with comfort, making it an ideal destination for relaxing weekends, romantic escapes, and peaceful nature stays. Guests can enjoy privacy, scenic landscapes, and a cozy environment while staying close to Murree's popular attractions.",
+    lat: 33.8760278,
+    lng: 73.4480556,
+    googleMapsEmbed: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3300.0!2d73.4454807!3d33.8760278!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzPCsDUyJzMzLjciTiA3M8KwMjYnNTMuMCJF!5e0!3m2!1sen!2s!4v1700000000000",
+  },
+  {
+    id: "platinum-hut-luxury-modern-mountain-stay-murree",
+    name: "The Luxury & Modern Approach (Platinum Hut)",
+    city: "Murree",
+    province: "Punjab",
+    price: 52500,
+    rating: 4.9,
+    reviews: 2,
+    guests: 8,
+    bedrooms: 1,
+    bathrooms: 1,
+    image: platinumHut1,
+    images: [platinumHut1, platinumHut2, platinumHut3, platinumHut4, platinumHut5, platinumHut6],
+    type: "Cabin",
+    amenities: ["High-speed WiFi", "Hot & Cold Water", "Comfortable Beds", "Private Bathroom", "Scenic Mountain Surroundings", "Outdoor Sitting Area", "Beautiful Natural Views", "Basic Kitchen Essentials", "Parking Space", "All Basic Living Facilities"],
+    description: "Discover premium mountain living at The Luxury & Modern Approach (Platinum Hut) located in the scenic hills near Murree. This stylish and modern hut offers a luxury glamping experience with beautiful natural surroundings. The Platinum Hut is designed with a contemporary aesthetic, providing guests with a comfortable and elegant retreat in the mountains. Perfect for families and groups, the hut accommodates up to 5 adults and 3 kids, making it ideal for memorable vacations, weekend escapes, and relaxing nature stays. Guests can enjoy peaceful surroundings, fresh mountain air, and breathtaking views while staying close to Murree's famous tourist attractions.",
     lat: 33.8760278,
     lng: 73.4480556,
     googleMapsEmbed: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3300.0!2d73.4454807!3d33.8760278!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzPCsDUyJzMzLjciTiA3M8KwMjYnNTMuMCJF!5e0!3m2!1sen!2s!4v1700000000000",
