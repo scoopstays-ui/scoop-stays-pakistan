@@ -48,6 +48,13 @@ import platinumHut3 from "@/assets/platinum-hut-3.jpg";
 import platinumHut4 from "@/assets/platinum-hut-4.jpg";
 import platinumHut5 from "@/assets/platinum-hut-5.jpg";
 import platinumHut6 from "@/assets/platinum-hut-6.jpg";
+import execApt1 from "@/assets/exec-apt-1.jpg";
+import execApt2 from "@/assets/exec-apt-2.jpg";
+import execApt3 from "@/assets/exec-apt-3.jpg";
+import execApt4 from "@/assets/exec-apt-4.jpg";
+import execApt5 from "@/assets/exec-apt-5.jpg";
+import execApt6 from "@/assets/exec-apt-6.jpg";
+import execApt7 from "@/assets/exec-apt-7.jpg";
 
 export interface Property {
   id: string;
