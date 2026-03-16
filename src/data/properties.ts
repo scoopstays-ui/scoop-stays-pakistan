@@ -55,6 +55,12 @@ import execApt4 from "@/assets/exec-apt-4.jpg";
 import execApt5 from "@/assets/exec-apt-5.jpg";
 import execApt6 from "@/assets/exec-apt-6.jpg";
 import execApt7 from "@/assets/exec-apt-7.jpg";
+import studioApt1 from "@/assets/studio-apt-1.jpg";
+import studioApt2 from "@/assets/studio-apt-2.jpg";
+import studioApt3 from "@/assets/studio-apt-3.jpg";
+import studioApt4 from "@/assets/studio-apt-4.jpg";
+import studioApt5 from "@/assets/studio-apt-5.jpg";
+import studioApt6 from "@/assets/studio-apt-6.jpg";
 
 export interface Property {
   id: string;
