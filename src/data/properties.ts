@@ -55,6 +55,12 @@ import execApt4 from "@/assets/exec-apt-4.jpg";
 import execApt5 from "@/assets/exec-apt-5.jpg";
 import execApt6 from "@/assets/exec-apt-6.jpg";
 import execApt7 from "@/assets/exec-apt-7.jpg";
+import studioApt1 from "@/assets/studio-apt-1.jpg";
+import studioApt2 from "@/assets/studio-apt-2.jpg";
+import studioApt3 from "@/assets/studio-apt-3.jpg";
+import studioApt4 from "@/assets/studio-apt-4.jpg";
+import studioApt5 from "@/assets/studio-apt-5.jpg";
+import studioApt6 from "@/assets/studio-apt-6.jpg";
 
 export interface Property {
   id: string;
@@ -449,6 +455,26 @@ export const properties: Property[] = [
     type: "Apartment",
     amenities: ["High-speed WiFi", "Hot & Cold Water", "Comfortable Bed", "Private Bathroom", "Beautiful Valley Views", "Clean & Cozy Living Space", "Basic Kitchen Essentials", "Parking Space", "All Basic Living Facilities"],
     description: "Enjoy a peaceful stay at the Breathtaking Valley View Apartment (Executive Apartment) located in the scenic hills near Murree. This cozy executive apartment is perfect for couples or solo travelers looking for a relaxing mountain getaway. The apartment offers beautiful valley views, allowing guests to wake up to fresh mountain air and stunning natural scenery. Designed for comfort and simplicity, the apartment includes all basic living facilities needed for a pleasant and convenient stay. Guests can enjoy a peaceful environment while still being close to Murree's popular attractions and tourist spots.",
+    lat: 33.9044839,
+    lng: 73.4191693,
+    googleMapsEmbed: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3300.0!2d73.418032!3d33.9044839!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38dfd78016e50c01%3A0xfc4281815586bed1!2sN-75%2C+Mughalabad%2C+Pakistan!5e0!3m2!1sen!2s!4v1700000000000",
+  },
+  {
+    id: "sleek-studio-living-murree",
+    name: "Sleek Studio Living | Includes Kitchen, TV & WiFi",
+    city: "Murree",
+    province: "Punjab",
+    price: 8000,
+    rating: 4.8,
+    reviews: 2,
+    guests: 2,
+    bedrooms: 1,
+    bathrooms: 1,
+    image: studioApt1,
+    images: [studioApt1, studioApt2, studioApt3, studioApt4, studioApt5, studioApt6],
+    type: "Apartment",
+    amenities: ["High-speed WiFi", "Smart TV", "Hot & Cold Water", "Comfortable Bed", "Private Bathroom", "Kitchen with Basic Essentials", "Beautiful Valley Views", "Clean & Cozy Space", "Parking Space", "All Basic Living Facilities"],
+    description: "Enjoy a comfortable and modern stay at Sleek Studio Living | Includes Kitchen, TV & WiFi, located in the peaceful hills near Murree. This stylish studio apartment is perfect for couples or solo travelers looking for a relaxing stay with beautiful valley views. The studio includes a cozy sleeping area, a functional kitchen space, and modern amenities to make your stay convenient and comfortable. Guests can enjoy fresh mountain air, scenic views, and a quiet environment, making it a perfect choice for weekend trips or short stays in Murree. The studio provides all essential facilities needed for a pleasant and stress-free stay.",
     lat: 33.9044839,
     lng: 73.4191693,
     googleMapsEmbed: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3300.0!2d73.418032!3d33.9044839!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38dfd78016e50c01%3A0xfc4281815586bed1!2sN-75%2C+Mughalabad%2C+Pakistan!5e0!3m2!1sen!2s!4v1700000000000",
