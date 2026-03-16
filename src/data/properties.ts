@@ -433,6 +433,26 @@ export const properties: Property[] = [
     lng: 73.4480556,
     googleMapsEmbed: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3300.0!2d73.4454807!3d33.8760278!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzPCsDUyJzMzLjciTiA3M8KwMjYnNTMuMCJF!5e0!3m2!1sen!2s!4v1700000000000",
   },
+  {
+    id: "valley-view-executive-apartment-murree",
+    name: "Breathtaking Valley View Apartment (Executive Apartment)",
+    city: "Murree",
+    province: "Punjab",
+    price: 11500,
+    rating: 4.8,
+    reviews: 3,
+    guests: 2,
+    bedrooms: 1,
+    bathrooms: 1,
+    image: execApt1,
+    images: [execApt1, execApt2, execApt3, execApt4, execApt5, execApt6, execApt7],
+    type: "Apartment",
+    amenities: ["High-speed WiFi", "Hot & Cold Water", "Comfortable Bed", "Private Bathroom", "Beautiful Valley Views", "Clean & Cozy Living Space", "Basic Kitchen Essentials", "Parking Space", "All Basic Living Facilities"],
+    description: "Enjoy a peaceful stay at the Breathtaking Valley View Apartment (Executive Apartment) located in the scenic hills near Murree. This cozy executive apartment is perfect for couples or solo travelers looking for a relaxing mountain getaway. The apartment offers beautiful valley views, allowing guests to wake up to fresh mountain air and stunning natural scenery. Designed for comfort and simplicity, the apartment includes all basic living facilities needed for a pleasant and convenient stay. Guests can enjoy a peaceful environment while still being close to Murree's popular attractions and tourist spots.",
+    lat: 33.9044839,
+    lng: 73.4191693,
+    googleMapsEmbed: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3300.0!2d73.418032!3d33.9044839!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38dfd78016e50c01%3A0xfc4281815586bed1!2sN-75%2C+Mughalabad%2C+Pakistan!5e0!3m2!1sen!2s!4v1700000000000",
+  },
 ];
 
 export const cities = [...new Set(properties.map((p) => p.city))];
