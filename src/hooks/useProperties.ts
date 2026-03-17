@@ -1,27 +1,21 @@
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
-import { DbProperty, DbPropertyInsert } from "@/integrations/supabase/types";
 import { Property } from "@/data/properties";
 
-const toFrontend = (p: DbProperty): Property => ({
-  id: p.id,
-  name: p.name,
-  city: p.city,
-  province: p.province,
-  price: p.price,
-  rating: p.rating,
-  reviews: p.reviews,
-  guests: p.guests,
-  bedrooms: p.bedrooms,
-  bathrooms: p.bathrooms,
-  image: p.image,
-  images: p.images,
-  type: p.type,
-  amenities: p.amenities,
-  description: p.description,
-  airbnbUrl: p.airbnb_url ?? undefined,
-  lat: p.lat,
-  lng: p.lng,
+type DbRow = {
+  id: string; name: string; city: string; province: string; price: number;
+  rating: number; reviews: number; guests: number; bedrooms: number; bathrooms: number;
+  image: string; images: string[]; type: string; amenities: string[];
+  description: string; airbnb_url: string | null; lat: number; lng: number;
+  google_maps_embed: string | null; created_at: string; updated_at: string;
+};
+
+const toFrontend = (p: DbRow): Property => ({
+  id: p.id, name: p.name, city: p.city, province: p.province, price: p.price,
+  rating: p.rating, reviews: p.reviews, guests: p.guests, bedrooms: p.bedrooms,
+  bathrooms: p.bathrooms, image: p.image, images: p.images, type: p.type,
+  amenities: p.amenities, description: p.description,
+  airbnbUrl: p.airbnb_url ?? undefined, lat: p.lat, lng: p.lng,
   googleMapsEmbed: p.google_maps_embed ?? undefined,
 });
 
@@ -34,7 +28,7 @@ export const useProperties = () => {
         .select("*")
         .order("created_at", { ascending: false });
       if (error) throw error;
-      return (data as DbProperty[]).map(toFrontend);
+      return (data as DbRow[]).map(toFrontend);
     },
   });
 };
@@ -50,7 +44,7 @@ export const useProperty = (id: string | undefined) => {
         .eq("id", id)
         .maybeSingle();
       if (error) throw error;
-      return data ? toFrontend(data as DbProperty) : null;
+      return data ? toFrontend(data as DbRow) : null;
     },
     enabled: !!id,
   });
@@ -59,7 +53,7 @@ export const useProperty = (id: string | undefined) => {
 export const useCreateProperty = () => {
   const qc = useQueryClient();
   return useMutation({
-    mutationFn: async (property: DbPropertyInsert) => {
+    mutationFn: async (property: Record<string, any>) => {
       const { error } = await supabase.from("properties").insert(property);
       if (error) throw error;
     },
@@ -70,7 +64,7 @@ export const useCreateProperty = () => {
 export const useUpdateProperty = () => {
   const qc = useQueryClient();
   return useMutation({
-    mutationFn: async ({ id, ...updates }: Partial<DbPropertyInsert> & { id: string }) => {
+    mutationFn: async ({ id, ...updates }: { id: string; [key: string]: any }) => {
       const { error } = await supabase.from("properties").update(updates).eq("id", id);
       if (error) throw error;
     },
