@@ -1,18 +1,29 @@
 import { useParams, Link } from "react-router-dom";
 import { useState } from "react";
-import { Star, MapPin, Users, Bed, Bath, ChevronLeft, ExternalLink, Check, MessageSquare } from "lucide-react";
+import { Star, MapPin, Users, Bed, Bath, ChevronLeft, ExternalLink, Check, MessageSquare, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Calendar } from "@/components/ui/calendar";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { properties, whatsappPropertyUrl } from "@/data/properties";
+import { whatsappPropertyUrl } from "@/data/properties";
+import { useProperty } from "@/hooks/useProperties";
 import { motion } from "framer-motion";
 
 const PropertyDetail = () => {
   const { id } = useParams();
-  const property = properties.find((p) => p.id === id);
+  const { data: property, isLoading } = useProperty(id);
   const [selectedImage, setSelectedImage] = useState(0);
   const [selectedDate, setSelectedDate] = useState<Date | undefined>();
+
+  if (isLoading) {
+    return (
+      <div className="min-h-screen bg-background">
+        <Header />
+        <div className="pt-32 flex justify-center"><Loader2 className="w-8 h-8 animate-spin text-accent" /></div>
+        <Footer />
+      </div>
+    );
+  }
 
   if (!property) {
     return (
