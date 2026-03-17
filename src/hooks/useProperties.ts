@@ -54,7 +54,7 @@ export const useCreateProperty = () => {
   const qc = useQueryClient();
   return useMutation({
     mutationFn: async (property: Record<string, any>) => {
-      const { error } = await supabase.from("properties").insert(property);
+      const { error } = await supabase.from("properties").insert(property as any);
       if (error) throw error;
     },
     onSuccess: () => qc.invalidateQueries({ queryKey: ["properties"] }),
