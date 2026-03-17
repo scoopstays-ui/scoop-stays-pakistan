@@ -1,12 +1,12 @@
 import { useState, useMemo } from "react";
 import { useSearchParams } from "react-router-dom";
-import { SlidersHorizontal, X, LayoutGrid, Map } from "lucide-react";
+import { SlidersHorizontal, X, LayoutGrid, Map, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import PropertyCard from "@/components/PropertyCard";
 import PropertyMap from "@/components/PropertyMap";
-import { properties, cities, propertyTypes } from "@/data/properties";
+import { useProperties } from "@/hooks/useProperties";
 import { motion } from "framer-motion";
 
 const Properties = () => {
@@ -14,11 +14,16 @@ const Properties = () => {
   const initialCity = searchParams.get("city") || "";
   const initialGuests = searchParams.get("guests") || "";
 
+  const { data: properties = [], isLoading } = useProperties();
+
   const [cityFilter, setCityFilter] = useState(initialCity);
   const [typeFilter, setTypeFilter] = useState("");
   const [guestsFilter, setGuestsFilter] = useState(initialGuests);
   const [showFilters, setShowFilters] = useState(false);
   const [viewMode, setViewMode] = useState<"grid" | "map">("grid");
+
+  const cities = useMemo(() => [...new Set(properties.map((p) => p.city))], [properties]);
+  const propertyTypes = useMemo(() => [...new Set(properties.map((p) => p.type))], [properties]);
 
   const filtered = useMemo(() => {
     return properties.filter((p) => {
@@ -27,7 +32,7 @@ const Properties = () => {
       if (guestsFilter && p.guests < parseInt(guestsFilter)) return false;
       return true;
     });
-  }, [cityFilter, typeFilter, guestsFilter]);
+  }, [properties, cityFilter, typeFilter, guestsFilter]);
 
   const clearFilters = () => {
     setCityFilter("");
@@ -57,66 +62,35 @@ const Properties = () => {
                 {hasFilters && <span className="ml-2 bg-accent text-accent-foreground text-xs rounded-full w-5 h-5 flex items-center justify-center">!</span>}
               </Button>
               <div className="ml-auto flex gap-1 bg-muted rounded-lg p-1">
-                <Button
-                  variant={viewMode === "grid" ? "default" : "ghost"}
-                  size="sm"
-                  onClick={() => setViewMode("grid")}
-                >
+                <Button variant={viewMode === "grid" ? "default" : "ghost"} size="sm" onClick={() => setViewMode("grid")}>
                   <LayoutGrid className="w-4 h-4" />
                 </Button>
-                <Button
-                  variant={viewMode === "map" ? "default" : "ghost"}
-                  size="sm"
-                  onClick={() => setViewMode("map")}
-                >
+                <Button variant={viewMode === "map" ? "default" : "ghost"} size="sm" onClick={() => setViewMode("map")}>
                   <Map className="w-4 h-4" />
                 </Button>
               </div>
             </div>
 
             {showFilters && (
-              <motion.div
-                initial={{ opacity: 0, height: 0 }}
-                animate={{ opacity: 1, height: "auto" }}
-                className="bg-card rounded-xl p-6 shadow-card mb-6"
-              >
+              <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: "auto" }} className="bg-card rounded-xl p-6 shadow-card mb-6">
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                   <div>
                     <label className="text-sm font-medium text-card-foreground mb-2 block">City</label>
-                    <select
-                      value={cityFilter}
-                      onChange={(e) => setCityFilter(e.target.value)}
-                      className="w-full rounded-lg border border-border bg-background px-3 py-2.5 text-sm text-foreground"
-                    >
+                    <select value={cityFilter} onChange={(e) => setCityFilter(e.target.value)} className="w-full rounded-lg border border-border bg-background px-3 py-2.5 text-sm text-foreground">
                       <option value="">All Cities</option>
-                      {cities.map((c) => (
-                        <option key={c} value={c}>{c}</option>
-                      ))}
+                      {cities.map((c) => <option key={c} value={c}>{c}</option>)}
                     </select>
                   </div>
                   <div>
                     <label className="text-sm font-medium text-card-foreground mb-2 block">Property Type</label>
-                    <select
-                      value={typeFilter}
-                      onChange={(e) => setTypeFilter(e.target.value)}
-                      className="w-full rounded-lg border border-border bg-background px-3 py-2.5 text-sm text-foreground"
-                    >
+                    <select value={typeFilter} onChange={(e) => setTypeFilter(e.target.value)} className="w-full rounded-lg border border-border bg-background px-3 py-2.5 text-sm text-foreground">
                       <option value="">All Types</option>
-                      {propertyTypes.map((t) => (
-                        <option key={t} value={t}>{t}</option>
-                      ))}
+                      {propertyTypes.map((t) => <option key={t} value={t}>{t}</option>)}
                     </select>
                   </div>
                   <div>
                     <label className="text-sm font-medium text-card-foreground mb-2 block">Min Guests</label>
-                    <input
-                      type="number"
-                      min="1"
-                      placeholder="Any"
-                      value={guestsFilter}
-                      onChange={(e) => setGuestsFilter(e.target.value)}
-                      className="w-full rounded-lg border border-border bg-background px-3 py-2.5 text-sm text-foreground"
-                    />
+                    <input type="number" min="1" placeholder="Any" value={guestsFilter} onChange={(e) => setGuestsFilter(e.target.value)} className="w-full rounded-lg border border-border bg-background px-3 py-2.5 text-sm text-foreground" />
                   </div>
                 </div>
                 {hasFilters && (
@@ -128,7 +102,9 @@ const Properties = () => {
             )}
           </div>
 
-          {viewMode === "grid" ? (
+          {isLoading ? (
+            <div className="flex justify-center py-20"><Loader2 className="w-8 h-8 animate-spin text-accent" /></div>
+          ) : viewMode === "grid" ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {filtered.map((property, i) => (
                 <PropertyCard key={property.id} property={property} index={i} />
@@ -138,7 +114,7 @@ const Properties = () => {
             <PropertyMap properties={filtered} />
           )}
 
-          {filtered.length === 0 && (
+          {!isLoading && filtered.length === 0 && (
             <div className="text-center py-20">
               <p className="text-muted-foreground text-lg">No properties match your filters.</p>
               <Button variant="accent" onClick={clearFilters} className="mt-4">Clear Filters</Button>

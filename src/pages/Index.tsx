@@ -7,7 +7,8 @@ import Footer from "@/components/Footer";
 import HeroSearch from "@/components/HeroSearch";
 import PropertyCard from "@/components/PropertyCard";
 import WhatsAppBookingForm from "@/components/WhatsAppBookingForm";
-import { properties, locations, WHATSAPP_BOOKING_URL } from "@/data/properties";
+import { locations, WHATSAPP_BOOKING_URL } from "@/data/properties";
+import { useProperties } from "@/hooks/useProperties";
 import { getDealsWithProperties } from "@/data/deals";
 import heroBg from "@/assets/hero-bg.jpg";
 
@@ -18,6 +19,7 @@ const testimonials = [
 ];
 
 const Index = () => {
+  const { data: properties = [] } = useProperties();
   const featured = properties.slice(0, 6);
   const dealsWithProps = getDealsWithProperties();
 
