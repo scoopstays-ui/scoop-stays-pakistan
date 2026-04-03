@@ -38,11 +38,11 @@ const Index = () => {
             Short-Term Rentals in Pakistan
           </motion.p>
           <motion.h1 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2, duration: 0.7 }} className="font-display text-4xl md:text-6xl lg:text-7xl font-bold text-primary-foreground mb-6 leading-tight">
-            Luxury Short-Term <br />
-            <span className="text-accent">Stays Across Pakistan</span>
+            Find Verified Stays <br />
+            <span className="text-accent">Across Pakistan</span>
           </motion.h1>
           <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }} className="text-primary-foreground/70 text-lg md:text-xl max-w-2xl mx-auto mb-10">
-            Book premium apartments, farmhouses, and vacation homes with ScoopStays.
+            Book directly. No hidden fees. Trusted by 5000+ guests.
           </motion.p>
           <HeroSearch />
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.7 }} className="flex flex-col sm:flex-row gap-4 justify-center mt-6">
