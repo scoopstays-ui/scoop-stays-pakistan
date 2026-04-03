@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Star, MapPin, Users, MessageSquare } from "lucide-react";
+import { Star, MapPin, Users, MessageSquare, Shield } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import type { Property } from "@/data/properties";
