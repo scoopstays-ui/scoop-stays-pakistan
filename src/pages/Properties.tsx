@@ -2,12 +2,16 @@ import { useState, useMemo } from "react";
 import { useSearchParams } from "react-router-dom";
 import { SlidersHorizontal, X, LayoutGrid, Map, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Slider } from "@/components/ui/slider";
+import { Checkbox } from "@/components/ui/checkbox";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import PropertyCard from "@/components/PropertyCard";
 import PropertyMap from "@/components/PropertyMap";
 import { useProperties } from "@/hooks/useProperties";
 import { motion } from "framer-motion";
+
+const COMMON_AMENITIES = ["Wi-Fi", "AC", "Pool", "Kitchen", "Parking", "BBQ", "Mountain View", "Sea View", "Gym", "Fireplace"];
 
 const Properties = () => {
   const [searchParams] = useSearchParams();
@@ -19,6 +23,8 @@ const Properties = () => {
   const [cityFilter, setCityFilter] = useState(initialCity);
   const [typeFilter, setTypeFilter] = useState("");
   const [guestsFilter, setGuestsFilter] = useState(initialGuests);
+  const [priceRange, setPriceRange] = useState<number[]>([0, 60000]);
+  const [selectedAmenities, setSelectedAmenities] = useState<string[]>([]);
   const [showFilters, setShowFilters] = useState(false);
   const [viewMode, setViewMode] = useState<"grid" | "map">("grid");
 
@@ -30,17 +36,30 @@ const Properties = () => {
       if (cityFilter && !p.city.toLowerCase().includes(cityFilter.toLowerCase())) return false;
       if (typeFilter && p.type !== typeFilter) return false;
       if (guestsFilter && p.guests < parseInt(guestsFilter)) return false;
+      if (p.price < priceRange[0] || p.price > priceRange[1]) return false;
+      if (selectedAmenities.length > 0) {
+        const propAmenities = p.amenities.map((a) => a.toLowerCase());
+        if (!selectedAmenities.every((a) => propAmenities.some((pa) => pa.includes(a.toLowerCase())))) return false;
+      }
       return true;
     });
-  }, [properties, cityFilter, typeFilter, guestsFilter]);
+  }, [properties, cityFilter, typeFilter, guestsFilter, priceRange, selectedAmenities]);
 
   const clearFilters = () => {
     setCityFilter("");
     setTypeFilter("");
     setGuestsFilter("");
+    setPriceRange([0, 60000]);
+    setSelectedAmenities([]);
   };
 
-  const hasFilters = cityFilter || typeFilter || guestsFilter;
+  const hasFilters = cityFilter || typeFilter || guestsFilter || priceRange[0] > 0 || priceRange[1] < 60000 || selectedAmenities.length > 0;
+
+  const toggleAmenity = (amenity: string) => {
+    setSelectedAmenities((prev) =>
+      prev.includes(amenity) ? prev.filter((a) => a !== amenity) : [...prev, amenity]
+    );
+  };
 
   return (
     <div className="min-h-screen bg-background">
@@ -73,7 +92,7 @@ const Properties = () => {
 
             {showFilters && (
               <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: "auto" }} className="bg-card rounded-xl p-6 shadow-card mb-6">
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
                   <div>
                     <label className="text-sm font-medium text-card-foreground mb-2 block">City</label>
                     <select value={cityFilter} onChange={(e) => setCityFilter(e.target.value)} className="w-full rounded-lg border border-border bg-background px-3 py-2.5 text-sm text-foreground">
@@ -93,6 +112,38 @@ const Properties = () => {
                     <input type="number" min="1" placeholder="Any" value={guestsFilter} onChange={(e) => setGuestsFilter(e.target.value)} className="w-full rounded-lg border border-border bg-background px-3 py-2.5 text-sm text-foreground" />
                   </div>
                 </div>
+
+                {/* Price Range Slider */}
+                <div className="mb-4">
+                  <label className="text-sm font-medium text-card-foreground mb-2 block">
+                    Price Range: PKR {priceRange[0].toLocaleString()} – PKR {priceRange[1].toLocaleString()}
+                  </label>
+                  <Slider
+                    min={0}
+                    max={60000}
+                    step={1000}
+                    value={priceRange}
+                    onValueChange={setPriceRange}
+                    className="mt-2"
+                  />
+                </div>
+
+                {/* Amenities */}
+                <div>
+                  <label className="text-sm font-medium text-card-foreground mb-2 block">Amenities</label>
+                  <div className="flex flex-wrap gap-3">
+                    {COMMON_AMENITIES.map((amenity) => (
+                      <label key={amenity} className="flex items-center gap-1.5 text-sm cursor-pointer">
+                        <Checkbox
+                          checked={selectedAmenities.includes(amenity)}
+                          onCheckedChange={() => toggleAmenity(amenity)}
+                        />
+                        {amenity}
+                      </label>
+                    ))}
+                  </div>
+                </div>
+
                 {hasFilters && (
                   <Button variant="ghost" size="sm" onClick={clearFilters} className="mt-4 text-accent">
                     <X className="w-3 h-3 mr-1" /> Clear All
