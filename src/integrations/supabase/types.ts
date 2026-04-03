@@ -14,6 +14,62 @@ export type Database = {
   }
   public: {
     Tables: {
+      bookings: {
+        Row: {
+          check_in: string | null
+          check_out: string | null
+          created_at: string
+          email: string | null
+          guest_name: string
+          guests: number
+          id: string
+          message: string | null
+          phone: string | null
+          property_id: string | null
+          property_name: string
+          status: string
+          updated_at: string
+        }
+        Insert: {
+          check_in?: string | null
+          check_out?: string | null
+          created_at?: string
+          email?: string | null
+          guest_name: string
+          guests?: number
+          id?: string
+          message?: string | null
+          phone?: string | null
+          property_id?: string | null
+          property_name: string
+          status?: string
+          updated_at?: string
+        }
+        Update: {
+          check_in?: string | null
+          check_out?: string | null
+          created_at?: string
+          email?: string | null
+          guest_name?: string
+          guests?: number
+          id?: string
+          message?: string | null
+          phone?: string | null
+          property_id?: string | null
+          property_name?: string
+          status?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "bookings_property_id_fkey"
+            columns: ["property_id"]
+            isOneToOne: false
+            referencedRelation: "properties"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       properties: {
         Row: {
           airbnb_url: string | null
