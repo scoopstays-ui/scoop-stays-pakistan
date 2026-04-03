@@ -1,4 +1,4 @@
-import { Building2, LayoutDashboard, LogOut, Home } from "lucide-react";
+import { Building2, LayoutDashboard, LogOut, Home, CalendarCheck } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import { useAuth } from "@/contexts/AuthContext";
 import {
