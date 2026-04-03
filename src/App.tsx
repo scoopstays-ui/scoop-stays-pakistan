@@ -23,6 +23,7 @@ import AdminLayout from "./pages/admin/AdminLayout";
 import AdminDashboard from "./pages/admin/AdminDashboard";
 import AdminProperties from "./pages/admin/AdminProperties";
 import AdminPropertyForm from "./pages/admin/AdminPropertyForm";
+import AdminBookings from "./pages/admin/AdminBookings";
 
 const queryClient = new QueryClient();
 
@@ -52,6 +53,7 @@ const App = () => (
                 <Route path="properties" element={<AdminProperties />} />
                 <Route path="properties/new" element={<AdminPropertyForm />} />
                 <Route path="properties/edit/:id" element={<AdminPropertyForm />} />
+                <Route path="bookings" element={<AdminBookings />} />
               </Route>
               <Route path="/:slug" element={<SeoLanding />} />
               <Route path="*" element={<NotFound />} />

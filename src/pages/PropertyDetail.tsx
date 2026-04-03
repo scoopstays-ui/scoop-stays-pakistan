@@ -1,10 +1,12 @@
 import { useParams, Link } from "react-router-dom";
 import { useState } from "react";
-import { Star, MapPin, Users, Bed, Bath, ChevronLeft, ExternalLink, Check, MessageSquare, Loader2 } from "lucide-react";
+import { Star, MapPin, Users, Bed, Bath, ChevronLeft, ExternalLink, Check, MessageSquare, Loader2, Shield } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Calendar } from "@/components/ui/calendar";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import BookingForm from "@/components/BookingForm";
 import { whatsappPropertyUrl } from "@/data/properties";
 import { useProperty } from "@/hooks/useProperties";
 import { motion } from "framer-motion";
@@ -80,8 +82,13 @@ const PropertyDetail = () => {
             {/* Details */}
             <div className="lg:col-span-2">
               <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
-                <div className="flex items-center gap-2 text-muted-foreground text-sm mb-2">
-                  <MapPin className="w-4 h-4" /> {property.city}, {property.province}
+                <div className="flex items-center gap-3 text-sm mb-2 flex-wrap">
+                  <span className="flex items-center gap-1 text-muted-foreground">
+                    <MapPin className="w-4 h-4" /> {property.city}, {property.province}
+                  </span>
+                  <span className="flex items-center gap-1 bg-accent/10 text-accent text-xs font-semibold px-2.5 py-1 rounded-full">
+                    <Shield className="w-3.5 h-3.5" /> Verified
+                  </span>
                 </div>
                 <h1 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-3">{property.name}</h1>
                 <div className="flex items-center gap-4 text-sm text-muted-foreground mb-6 flex-wrap">
@@ -153,20 +160,30 @@ const PropertyDetail = () => {
                   <span className="text-muted-foreground text-sm"> / night</span>
                 </div>
 
-                <h3 className="font-display text-lg font-semibold text-card-foreground mb-3">Availability</h3>
-                <Calendar
-                  mode="single"
-                  selected={selectedDate}
-                  onSelect={setSelectedDate}
-                  className="rounded-lg border border-border mb-4 pointer-events-auto"
-                  disabled={(date) => date < new Date()}
-                />
-
-                <Button variant="accent" className="w-full mb-3" size="lg" asChild>
-                  <a href={whatsappPropertyUrl(property.name)} target="_blank" rel="noopener noreferrer">
-                    <MessageSquare className="w-4 h-4 mr-2" /> Book via WhatsApp
-                  </a>
-                </Button>
+                <Tabs defaultValue="booking" className="mb-4">
+                  <TabsList className="w-full">
+                    <TabsTrigger value="booking" className="flex-1">Request Booking</TabsTrigger>
+                    <TabsTrigger value="whatsapp" className="flex-1">WhatsApp</TabsTrigger>
+                  </TabsList>
+                  <TabsContent value="booking" className="mt-3">
+                    <BookingForm propertyId={property.id} propertyName={property.name} />
+                  </TabsContent>
+                  <TabsContent value="whatsapp" className="mt-3 space-y-3">
+                    <h3 className="font-display text-lg font-semibold text-card-foreground mb-3">Availability</h3>
+                    <Calendar
+                      mode="single"
+                      selected={selectedDate}
+                      onSelect={setSelectedDate}
+                      className="rounded-lg border border-border mb-4 pointer-events-auto"
+                      disabled={(date) => date < new Date()}
+                    />
+                    <Button variant="accent" className="w-full" size="lg" asChild>
+                      <a href={whatsappPropertyUrl(property.name)} target="_blank" rel="noopener noreferrer">
+                        <MessageSquare className="w-4 h-4 mr-2" /> Book via WhatsApp
+                      </a>
+                    </Button>
+                  </TabsContent>
+                </Tabs>
 
                 {property.airbnbUrl && (
                   <Button variant="outline" className="w-full" size="lg" asChild>
@@ -176,10 +193,6 @@ const PropertyDetail = () => {
                     </a>
                   </Button>
                 )}
-
-                <p className="text-xs text-muted-foreground text-center mt-4">
-                  Calendar synced with Airbnb via iCal
-                </p>
               </motion.div>
             </div>
           </div>

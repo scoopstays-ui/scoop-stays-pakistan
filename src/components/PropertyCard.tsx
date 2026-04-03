@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Star, MapPin, Users, MessageSquare } from "lucide-react";
+import { Star, MapPin, Users, MessageSquare, Shield } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import type { Property } from "@/data/properties";
@@ -35,6 +35,9 @@ const PropertyCard = ({ property, index = 0 }: PropertyCardProps) => {
             Airbnb Linked
           </div>
         )}
+        <div className="absolute bottom-4 left-4 bg-card/90 backdrop-blur-sm text-xs font-semibold px-2.5 py-1 rounded-full flex items-center gap-1 text-accent">
+          <Shield className="w-3 h-3" /> Verified
+        </div>
       </div>
 
       <div className="p-5">
