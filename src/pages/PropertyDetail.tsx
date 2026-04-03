@@ -82,8 +82,13 @@ const PropertyDetail = () => {
             {/* Details */}
             <div className="lg:col-span-2">
               <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
-                <div className="flex items-center gap-2 text-muted-foreground text-sm mb-2">
-                  <MapPin className="w-4 h-4" /> {property.city}, {property.province}
+                <div className="flex items-center gap-3 text-sm mb-2 flex-wrap">
+                  <span className="flex items-center gap-1 text-muted-foreground">
+                    <MapPin className="w-4 h-4" /> {property.city}, {property.province}
+                  </span>
+                  <span className="flex items-center gap-1 bg-accent/10 text-accent text-xs font-semibold px-2.5 py-1 rounded-full">
+                    <Shield className="w-3.5 h-3.5" /> Verified
+                  </span>
                 </div>
                 <h1 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-3">{property.name}</h1>
                 <div className="flex items-center gap-4 text-sm text-muted-foreground mb-6 flex-wrap">
