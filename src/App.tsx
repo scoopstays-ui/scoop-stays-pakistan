@@ -53,6 +53,7 @@ const App = () => (
                 <Route path="properties" element={<AdminProperties />} />
                 <Route path="properties/new" element={<AdminPropertyForm />} />
                 <Route path="properties/edit/:id" element={<AdminPropertyForm />} />
+                <Route path="bookings" element={<AdminBookings />} />
               </Route>
               <Route path="/:slug" element={<SeoLanding />} />
               <Route path="*" element={<NotFound />} />
