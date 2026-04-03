@@ -18,6 +18,7 @@ import { Button } from "@/components/ui/button";
 const navItems = [
   { title: "Dashboard", url: "/admin", icon: LayoutDashboard },
   { title: "Properties", url: "/admin/properties", icon: Building2 },
+  { title: "Bookings", url: "/admin/bookings", icon: CalendarCheck },
 ];
 
 export function AdminSidebar() {
