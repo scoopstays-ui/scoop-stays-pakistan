@@ -1,10 +1,12 @@
 import { useParams, Link } from "react-router-dom";
 import { useState } from "react";
-import { Star, MapPin, Users, Bed, Bath, ChevronLeft, ExternalLink, Check, MessageSquare, Loader2 } from "lucide-react";
+import { Star, MapPin, Users, Bed, Bath, ChevronLeft, ExternalLink, Check, MessageSquare, Loader2, Shield } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Calendar } from "@/components/ui/calendar";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import BookingForm from "@/components/BookingForm";
 import { whatsappPropertyUrl } from "@/data/properties";
 import { useProperty } from "@/hooks/useProperties";
 import { motion } from "framer-motion";
