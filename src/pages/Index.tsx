@@ -228,6 +228,7 @@ const Index = () => {
       </section>
 
       <Footer />
+      <StickyBookButton />
     </div>
   );
 };
