@@ -7,6 +7,7 @@ import Footer from "@/components/Footer";
 import HeroSearch from "@/components/HeroSearch";
 import PropertyCard from "@/components/PropertyCard";
 import WhatsAppBookingForm from "@/components/WhatsAppBookingForm";
+import StickyBookButton from "@/components/StickyBookButton";
 import { locations, WHATSAPP_BOOKING_URL } from "@/data/properties";
 import { useProperties } from "@/hooks/useProperties";
 import { getDealsWithProperties } from "@/data/deals";
