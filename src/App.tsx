@@ -49,6 +49,7 @@ const App = () => (
               <Route path="/blog/:slug" element={<BlogPost />} />
               {/* Admin Routes */}
               <Route path="/admin/login" element={<AdminLogin />} />
+              <Route path="/reset-password" element={<ResetPassword />} />
               <Route path="/admin" element={<AdminLayout />}>
                 <Route index element={<AdminDashboard />} />
                 <Route path="properties" element={<AdminProperties />} />
