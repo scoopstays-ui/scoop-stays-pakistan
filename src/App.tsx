@@ -24,6 +24,7 @@ import AdminDashboard from "./pages/admin/AdminDashboard";
 import AdminProperties from "./pages/admin/AdminProperties";
 import AdminPropertyForm from "./pages/admin/AdminPropertyForm";
 import AdminBookings from "./pages/admin/AdminBookings";
+import ResetPassword from "./pages/admin/ResetPassword";
 
 const queryClient = new QueryClient();
 
