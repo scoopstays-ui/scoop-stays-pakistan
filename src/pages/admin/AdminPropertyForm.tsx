@@ -1,6 +1,7 @@
 import { useEffect, useState, useCallback } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { useProperty, useCreateProperty, useUpdateProperty, uploadPropertyImage } from "@/hooks/useProperties";
+import { useProperty, useCreateProperty, useUpdateProperty } from "@/hooks/useProperties";
+import { ImageUploader } from "@/components/admin/ImageUploader";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
