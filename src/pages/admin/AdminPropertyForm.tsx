@@ -131,23 +131,8 @@ const AdminPropertyForm = () => {
     }
   };
 
-  const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    const files = e.target.files;
-    if (!files?.length) return;
-    setUploading(true);
-    try {
-      const propId = form.id || form.name.toLowerCase().replace(/[^a-z0-9]+/g, "-") || "new-property";
-      const urls: string[] = [];
-      for (const file of Array.from(files)) {
-        const url = await uploadPropertyImage(file, propId);
-        urls.push(url);
-      }
-      setImages((prev) => [...prev, ...urls]);
-      toast({ title: "Uploaded", description: `${urls.length} image(s) uploaded successfully.` });
-    } catch {
-      toast({ title: "Upload failed", description: "Could not upload images.", variant: "destructive" });
-    }
-    setUploading(false);
+  const handleImageUploaded = (url: string) => {
+    setImages((prev) => [...prev, url]);
   };
 
   const removeImage = (index: number) => setImages((prev) => prev.filter((_, i) => i !== index));
@@ -434,21 +419,10 @@ const AdminPropertyForm = () => {
                   </div>
                 )}
 
-                <label className="flex flex-col items-center justify-center border-2 border-dashed border-border rounded-xl p-8 cursor-pointer hover:bg-muted/50 hover:border-accent/50 transition-all">
-                  {uploading ? (
-                    <>
-                      <Loader2 className="w-8 h-8 animate-spin text-accent mb-2" />
-                      <span className="text-sm text-muted-foreground">Uploading images...</span>
-                    </>
-                  ) : (
-                    <>
-                      <Upload className="w-8 h-8 text-muted-foreground mb-2" />
-                      <span className="text-sm font-medium">Click to upload images</span>
-                      <span className="text-xs text-muted-foreground mt-1">JPG, PNG, WebP • Max 5MB each</span>
-                    </>
-                  )}
-                  <input type="file" accept="image/*" multiple onChange={handleImageUpload} className="hidden" disabled={uploading} />
-                </label>
+                <ImageUploader
+                  folder={form.id || form.name.toLowerCase().replace(/[^a-z0-9]+/g, "-") || "new-property"}
+                  onUpload={handleImageUploaded}
+                />
 
                 <p className="text-xs text-muted-foreground">{images.length} image{images.length !== 1 ? "s" : ""} uploaded</p>
               </CardContent>
