@@ -11,18 +11,26 @@ import StickyBookButton from "@/components/StickyBookButton";
 import { locations, WHATSAPP_BOOKING_URL } from "@/data/properties";
 import { useProperties } from "@/hooks/useProperties";
 import { getDealsWithProperties } from "@/data/deals";
+import { useSiteSetting, HeroSettings, StatItem, ContactSettings, TestimonialItem, CtaSettings } from "@/hooks/useSiteSettings";
 import heroBg from "@/assets/hero-bg.jpg";
-
-const testimonials = [
-  { name: "Ali Khan", city: "Lahore", text: "Amazing stay experience. The property was clean and exactly as shown. Highly recommended." },
-  { name: "Sarah Ahmed", city: "Karachi", text: "Smooth booking process and very helpful support team." },
-  { name: "Usman Raza", city: "Islamabad", text: "Great property and professional management." },
-];
 
 const Index = () => {
   const { data: properties = [] } = useProperties();
   const featured = properties.slice(0, 6);
   const dealsWithProps = getDealsWithProperties();
+
+  // CMS data
+  const { data: heroData } = useSiteSetting<HeroSettings>("hero");
+  const { data: statsData } = useSiteSetting<StatItem[]>("stats");
+  const { data: contactData } = useSiteSetting<ContactSettings>("contact");
+  const { data: testimonialsData } = useSiteSetting<TestimonialItem[]>("testimonials");
+  const { data: ctaData } = useSiteSetting<CtaSettings>("cta");
+
+  const hero = heroData ?? { title: "Find Verified Stays", titleHighlight: "Across Pakistan", subtitle: "Short-Term Rentals in Pakistan", description: "Book directly. No hidden fees. Trusted by 5000+ guests.", backgroundImage: "" };
+  const stats = statsData ?? [{ value: "100+", label: "Properties" }, { value: "15+", label: "Cities" }, { value: "4.8", label: "Avg Rating" }, { value: "5000+", label: "Happy Guests" }];
+  const whatsappUrl = contactData?.whatsappUrl ?? WHATSAPP_BOOKING_URL;
+  const testimonials = testimonialsData ?? [];
+  const cta = ctaData ?? { title: "Book Your Perfect Stay Today", description: "Browse our collection of 100+ luxury properties and find your perfect stay across Pakistan." };
 
   return (
     <div className="min-h-screen">
@@ -31,19 +39,19 @@ const Index = () => {
       {/* Hero */}
       <section className="relative h-screen min-h-[700px] flex items-center justify-center">
         <div className="absolute inset-0">
-          <img src={heroBg} alt="Luxury stays across Pakistan" className="w-full h-full object-cover" />
+          <img src={hero.backgroundImage || heroBg} alt="Luxury stays across Pakistan" className="w-full h-full object-cover" />
           <div className="absolute inset-0 gradient-hero" />
         </div>
         <div className="relative z-10 container mx-auto px-4 text-center">
           <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }} className="text-accent font-medium tracking-widest uppercase text-sm mb-4">
-            Short-Term Rentals in Pakistan
+            {hero.subtitle}
           </motion.p>
           <motion.h1 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2, duration: 0.7 }} className="font-display text-4xl md:text-6xl lg:text-7xl font-bold text-primary-foreground mb-6 leading-tight">
-            Find Verified Stays <br />
-            <span className="text-accent">Across Pakistan</span>
+            {hero.title} <br />
+            <span className="text-accent">{hero.titleHighlight}</span>
           </motion.h1>
           <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }} className="text-primary-foreground/70 text-lg md:text-xl max-w-2xl mx-auto mb-10">
-            Book directly. No hidden fees. Trusted by 5000+ guests.
+            {hero.description}
           </motion.p>
           <HeroSearch />
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.7 }} className="flex flex-col sm:flex-row gap-4 justify-center mt-6">
@@ -51,7 +59,7 @@ const Index = () => {
               <Link to="/properties">Browse Properties</Link>
             </Button>
             <Button variant="outline" size="lg" className="border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10" asChild>
-              <a href={WHATSAPP_BOOKING_URL} target="_blank" rel="noopener noreferrer">
+              <a href={whatsappUrl} target="_blank" rel="noopener noreferrer">
                 <MessageSquare className="w-4 h-4 mr-2" /> Book on WhatsApp
               </a>
             </Button>
@@ -63,12 +71,7 @@ const Index = () => {
       <section className="bg-card py-16">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-            {[
-              { value: "100+", label: "Properties" },
-              { value: "15+", label: "Cities" },
-              { value: "4.8", label: "Avg Rating" },
-              { value: "5000+", label: "Happy Guests" },
-            ].map((stat, i) => (
+            {stats.map((stat, i) => (
               <motion.div key={stat.label} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}>
                 <div className="text-3xl md:text-4xl font-display font-bold text-accent">{stat.value}</div>
                 <div className="text-muted-foreground text-sm mt-1">{stat.label}</div>
@@ -187,41 +190,43 @@ const Index = () => {
       </section>
 
       {/* Testimonials */}
-      <section className="py-20 bg-background">
-        <div className="container mx-auto px-4 lg:px-8 text-center">
-          <p className="text-accent font-medium tracking-widest uppercase text-sm mb-2">Guest Reviews</p>
-          <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-12">What Our Guests Say</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {testimonials.map((t, i) => (
-              <motion.div key={t.name} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.15 }} className="bg-card rounded-xl p-8 shadow-card text-left relative">
-                <Quote className="w-8 h-8 text-accent/20 absolute top-6 right-6" />
-                <div className="flex gap-1 mb-4">
-                  {Array.from({ length: 5 }).map((_, j) => (
-                    <Star key={j} className="w-4 h-4 text-accent fill-accent" />
-                  ))}
-                </div>
-                <p className="text-foreground/80 text-sm leading-relaxed mb-4">"{t.text}"</p>
-                <div>
-                  <p className="font-display font-semibold text-foreground">{t.name}</p>
-                  <p className="text-muted-foreground text-xs">{t.city}</p>
-                </div>
-              </motion.div>
-            ))}
+      {testimonials.length > 0 && (
+        <section className="py-20 bg-background">
+          <div className="container mx-auto px-4 lg:px-8 text-center">
+            <p className="text-accent font-medium tracking-widest uppercase text-sm mb-2">Guest Reviews</p>
+            <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-12">What Our Guests Say</h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {testimonials.map((t, i) => (
+                <motion.div key={t.name} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.15 }} className="bg-card rounded-xl p-8 shadow-card text-left relative">
+                  <Quote className="w-8 h-8 text-accent/20 absolute top-6 right-6" />
+                  <div className="flex gap-1 mb-4">
+                    {Array.from({ length: 5 }).map((_, j) => (
+                      <Star key={j} className="w-4 h-4 text-accent fill-accent" />
+                    ))}
+                  </div>
+                  <p className="text-foreground/80 text-sm leading-relaxed mb-4">"{t.text}"</p>
+                  <div>
+                    <p className="font-display font-semibold text-foreground">{t.name}</p>
+                    <p className="text-muted-foreground text-xs">{t.city}</p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       {/* CTA */}
       <section className="py-20 bg-primary">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="font-display text-3xl md:text-4xl font-bold text-primary-foreground mb-6">Book Your Perfect Stay Today</h2>
-          <p className="text-primary-foreground/60 max-w-xl mx-auto mb-8">Browse our collection of 100+ luxury properties and find your perfect stay across Pakistan.</p>
+          <h2 className="font-display text-3xl md:text-4xl font-bold text-primary-foreground mb-6">{cta.title}</h2>
+          <p className="text-primary-foreground/60 max-w-xl mx-auto mb-8">{cta.description}</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button variant="accent" size="lg" asChild>
               <Link to="/properties">Browse Properties</Link>
             </Button>
             <Button variant="outline" size="lg" className="border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10" asChild>
-              <a href={WHATSAPP_BOOKING_URL} target="_blank" rel="noopener noreferrer">Book via WhatsApp</a>
+              <a href={whatsappUrl} target="_blank" rel="noopener noreferrer">Book via WhatsApp</a>
             </Button>
           </div>
         </div>
