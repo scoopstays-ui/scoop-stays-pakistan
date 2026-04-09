@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import type { Property } from "@/data/properties";
 import { whatsappPropertyUrl } from "@/data/properties";
+import PropertyImage from "@/components/PropertyImage";
 
 interface PropertyCardProps {
   property: Property;
