@@ -1,6 +1,7 @@
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 import { Property } from "@/data/properties";
+import { resolveImageUrl } from "@/lib/assetMap";
 
 type DbRow = {
   id: string; name: string; city: string; province: string; price: number;
@@ -13,7 +14,7 @@ type DbRow = {
 const toFrontend = (p: DbRow): Property => ({
   id: p.id, name: p.name, city: p.city, province: p.province, price: p.price,
   rating: p.rating, reviews: p.reviews, guests: p.guests, bedrooms: p.bedrooms,
-  bathrooms: p.bathrooms, image: p.image, images: p.images, type: p.type,
+  bathrooms: p.bathrooms, image: resolveImageUrl(p.image), images: p.images.map(resolveImageUrl), type: p.type,
   amenities: p.amenities, description: p.description,
   airbnbUrl: p.airbnb_url ?? undefined, lat: p.lat, lng: p.lng,
   googleMapsEmbed: p.google_maps_embed ?? undefined,
