@@ -6,6 +6,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import HeroSearch from "@/components/HeroSearch";
 import PropertyCard from "@/components/PropertyCard";
+import PropertyImage from "@/components/PropertyImage";
 import WhatsAppBookingForm from "@/components/WhatsAppBookingForm";
 import StickyBookButton from "@/components/StickyBookButton";
 import { locations, WHATSAPP_BOOKING_URL } from "@/data/properties";
@@ -99,7 +100,7 @@ const Index = () => {
                 className="bg-card rounded-xl shadow-card overflow-hidden group"
               >
                 <div className="relative">
-                  <img src={deal.property.image} alt={deal.label} className="w-full h-40 object-cover" />
+                  <PropertyImage src={deal.property.image} alt={deal.label} className="w-full h-40 object-cover" />
                   <span className="absolute top-3 left-3 bg-accent text-accent-foreground text-xs font-bold px-2 py-1 rounded-full flex items-center gap-1">
                     <Tag className="w-3 h-3" /> {deal.badge}
                   </span>

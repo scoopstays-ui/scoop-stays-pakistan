@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import type { Property } from "@/data/properties";
 import { whatsappPropertyUrl } from "@/data/properties";
+import PropertyImage from "@/components/PropertyImage";
 
 interface PropertyCardProps {
   property: Property;
@@ -20,7 +21,7 @@ const PropertyCard = ({ property, index = 0 }: PropertyCardProps) => {
       className="group bg-card rounded-lg overflow-hidden shadow-card hover:shadow-card-hover transition-all duration-500"
     >
       <div className="relative overflow-hidden aspect-[4/3]">
-        <img
+        <PropertyImage
           src={property.image}
           alt={property.name}
           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"

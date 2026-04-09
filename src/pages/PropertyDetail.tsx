@@ -7,6 +7,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import BookingForm from "@/components/BookingForm";
+import PropertyImage from "@/components/PropertyImage";
 import { whatsappPropertyUrl } from "@/data/properties";
 import { useProperty } from "@/hooks/useProperties";
 import { motion } from "framer-motion";
@@ -61,7 +62,7 @@ const PropertyDetail = () => {
           {/* Gallery */}
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="mb-10">
             <div className="rounded-xl overflow-hidden aspect-[16/9] mb-3">
-              <img src={property.images[selectedImage]} alt={property.name} className="w-full h-full object-cover" />
+              <PropertyImage src={property.images[selectedImage]} alt={property.name} className="w-full h-full object-cover" />
             </div>
             <div className="grid grid-cols-3 gap-3">
               {property.images.map((img, i) => (
@@ -72,7 +73,7 @@ const PropertyDetail = () => {
                     i === selectedImage ? "border-accent" : "border-transparent opacity-70 hover:opacity-100"
                   }`}
                 >
-                  <img src={img} alt="" className="w-full h-full object-cover" />
+                  <PropertyImage src={img} alt="" className="w-full h-full object-cover" />
                 </button>
               ))}
             </div>
