@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { useAllSiteSettings, useUpdateSiteSetting, HeroSettings, StatItem, ContactSettings, TestimonialItem, CtaSettings } from "@/hooks/useSiteSettings";
+import { useAllSiteSettings, useUpdateSiteSetting, HeroSettings, StatItem, ContactSettings, TestimonialItem, CtaSettings, DealItem } from "@/hooks/useSiteSettings";
+import { useProperties } from "@/hooks/useProperties";
 import { ImageUploader } from "@/components/admin/ImageUploader";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -8,11 +9,13 @@ import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Separator } from "@/components/ui/separator";
-import { Loader2, Save, Plus, Trash2, Image as ImageIcon, Type, Phone, MessageSquare, BarChart3, Quote, Megaphone } from "lucide-react";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Loader2, Save, Plus, Trash2, Image as ImageIcon, Type, Phone, MessageSquare, BarChart3, Quote, Megaphone, Tag } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
 const AdminCMS = () => {
   const { data: settings, isLoading } = useAllSiteSettings();
+  const { data: properties = [] } = useProperties();
   const updateMutation = useUpdateSiteSetting();
   const { toast } = useToast();
 
@@ -22,6 +25,7 @@ const AdminCMS = () => {
   const [contact, setContact] = useState<ContactSettings>({ phone: "", email: "", address: "", whatsappUrl: "" });
   const [testimonials, setTestimonials] = useState<TestimonialItem[]>([]);
   const [cta, setCta] = useState<CtaSettings>({ title: "", description: "" });
+  const [deals, setDeals] = useState<DealItem[]>([]);
 
   useEffect(() => {
     if (!settings) return;
@@ -30,6 +34,7 @@ const AdminCMS = () => {
     if (settings.contact) setContact(settings.contact as ContactSettings);
     if (settings.testimonials) setTestimonials(settings.testimonials as TestimonialItem[]);
     if (settings.cta) setCta(settings.cta as CtaSettings);
+    if (settings.deals) setDeals(settings.deals as DealItem[]);
   }, [settings]);
 
   const save = async (key: string, value: any, label: string) => {
@@ -57,9 +62,10 @@ const AdminCMS = () => {
       </div>
 
       <Tabs defaultValue="hero" className="space-y-6">
-        <TabsList className="grid w-full grid-cols-3 sm:grid-cols-5">
+        <TabsList className="grid w-full grid-cols-3 sm:grid-cols-6">
           <TabsTrigger value="hero" className="gap-1"><Type className="w-3 h-3 hidden sm:block" /> Hero</TabsTrigger>
           <TabsTrigger value="stats" className="gap-1"><BarChart3 className="w-3 h-3 hidden sm:block" /> Stats</TabsTrigger>
+          <TabsTrigger value="deals" className="gap-1"><Tag className="w-3 h-3 hidden sm:block" /> Deals</TabsTrigger>
           <TabsTrigger value="contact" className="gap-1"><Phone className="w-3 h-3 hidden sm:block" /> Contact</TabsTrigger>
           <TabsTrigger value="testimonials" className="gap-1"><Quote className="w-3 h-3 hidden sm:block" /> Reviews</TabsTrigger>
           <TabsTrigger value="cta" className="gap-1"><Megaphone className="w-3 h-3 hidden sm:block" /> CTA</TabsTrigger>
