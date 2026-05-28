@@ -12,13 +12,13 @@ import StickyBookButton from "@/components/StickyBookButton";
 import { locations, WHATSAPP_BOOKING_URL } from "@/data/properties";
 import { useProperties } from "@/hooks/useProperties";
 import { getDealsWithProperties } from "@/data/deals";
-import { useSiteSetting, HeroSettings, StatItem, ContactSettings, TestimonialItem, CtaSettings } from "@/hooks/useSiteSettings";
+import { useSiteSetting, HeroSettings, StatItem, ContactSettings, TestimonialItem, CtaSettings, DealItem } from "@/hooks/useSiteSettings";
 import heroBg from "@/assets/hero-bg.jpg";
 
 const Index = () => {
   const { data: properties = [] } = useProperties();
   const featured = properties.slice(0, 6);
-  const dealsWithProps = getDealsWithProperties();
+  const fallbackDeals = getDealsWithProperties();
 
   // CMS data
   const { data: heroData } = useSiteSetting<HeroSettings>("hero");
@@ -26,6 +26,13 @@ const Index = () => {
   const { data: contactData } = useSiteSetting<ContactSettings>("contact");
   const { data: testimonialsData } = useSiteSetting<TestimonialItem[]>("testimonials");
   const { data: ctaData } = useSiteSetting<CtaSettings>("cta");
+  const { data: dealsData } = useSiteSetting<DealItem[]>("deals");
+
+  const dealsWithProps = (dealsData && dealsData.length > 0)
+    ? dealsData
+        .map((d) => ({ ...d, property: properties.find((p) => p.id === d.propertyId) }))
+        .filter((d) => d.property)
+    : fallbackDeals;
 
   const hero = heroData ?? { title: "Find Verified Stays", titleHighlight: "Across Pakistan", subtitle: "Short-Term Rentals in Pakistan", description: "Book directly. No hidden fees. Trusted by 5000+ guests.", backgroundImage: "" };
   const stats = statsData ?? [{ value: "100+", label: "Properties" }, { value: "15+", label: "Cities" }, { value: "4.8", label: "Avg Rating" }, { value: "5000+", label: "Happy Guests" }];
