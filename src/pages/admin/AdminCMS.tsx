@@ -248,6 +248,92 @@ const AdminCMS = () => {
           </Card>
         </TabsContent>
 
+        {/* Deals */}
+        <TabsContent value="deals" className="space-y-4">
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2"><Tag className="w-5 h-5 text-accent" /> Special Deals & Offers</CardTitle>
+              <CardDescription>Manage limited-time deals shown on the homepage. Leave empty to show defaults.</CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              {deals.map((deal, i) => (
+                <div key={i} className="border border-border rounded-lg p-4 space-y-3">
+                  <div className="flex items-center justify-between">
+                    <span className="text-sm font-medium text-foreground">Deal #{i + 1}</span>
+                    <Button variant="ghost" size="icon" onClick={() => setDeals(deals.filter((_, j) => j !== i))}>
+                      <Trash2 className="w-4 h-4 text-destructive" />
+                    </Button>
+                  </div>
+                  <div className="space-y-1">
+                    <Label className="text-xs">Property</Label>
+                    <Select
+                      value={deal.propertyId}
+                      onValueChange={(v) => {
+                        const updated = [...deals];
+                        updated[i] = { ...deal, propertyId: v };
+                        setDeals(updated);
+                      }}
+                    >
+                      <SelectTrigger>
+                        <SelectValue placeholder="Select a property" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        {properties.map((p) => (
+                          <SelectItem key={p.id} value={p.id}>{p.name} — {p.city}</SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                  </div>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <div className="space-y-1">
+                      <Label className="text-xs">Deal Label</Label>
+                      <Input value={deal.label} onChange={(e) => {
+                        const updated = [...deals];
+                        updated[i] = { ...deal, label: e.target.value };
+                        setDeals(updated);
+                      }} placeholder="Weekend Deal in Murree" />
+                    </div>
+                    <div className="space-y-1">
+                      <Label className="text-xs">Badge</Label>
+                      <Input value={deal.badge} onChange={(e) => {
+                        const updated = [...deals];
+                        updated[i] = { ...deal, badge: e.target.value };
+                        setDeals(updated);
+                      }} placeholder="27% OFF" />
+                    </div>
+                  </div>
+                  <div className="grid grid-cols-2 gap-3">
+                    <div className="space-y-1">
+                      <Label className="text-xs">Original Price (PKR)</Label>
+                      <Input type="number" value={deal.originalPrice} onChange={(e) => {
+                        const updated = [...deals];
+                        updated[i] = { ...deal, originalPrice: Number(e.target.value) };
+                        setDeals(updated);
+                      }} />
+                    </div>
+                    <div className="space-y-1">
+                      <Label className="text-xs">Discounted Price (PKR)</Label>
+                      <Input type="number" value={deal.discountedPrice} onChange={(e) => {
+                        const updated = [...deals];
+                        updated[i] = { ...deal, discountedPrice: Number(e.target.value) };
+                        setDeals(updated);
+                      }} />
+                    </div>
+                  </div>
+                </div>
+              ))}
+              <Button variant="outline" size="sm" onClick={() => setDeals([...deals, { propertyId: "", label: "", originalPrice: 0, discountedPrice: 0, badge: "" }])}>
+                <Plus className="w-4 h-4 mr-1" /> Add Deal
+              </Button>
+              <Separator />
+              <Button onClick={() => save("deals", deals, "Deals")} disabled={updateMutation.isPending}>
+                {updateMutation.isPending ? <Loader2 className="w-4 h-4 mr-2 animate-spin" /> : <Save className="w-4 h-4 mr-2" />}
+                Save Deals
+              </Button>
+            </CardContent>
+          </Card>
+        </TabsContent>
+
         {/* CTA */}
         <TabsContent value="cta" className="space-y-4">
           <Card>
