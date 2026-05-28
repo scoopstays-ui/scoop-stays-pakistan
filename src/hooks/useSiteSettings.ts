@@ -32,6 +32,14 @@ export interface CtaSettings {
   description: string;
 }
 
+export interface DealItem {
+  propertyId: string;
+  label: string;
+  originalPrice: number;
+  discountedPrice: number;
+  badge: string;
+}
+
 export interface BannerItem {
   id: string;
   title: string;
@@ -83,8 +91,7 @@ export const useUpdateSiteSetting = () => {
     mutationFn: async ({ key, value }: { key: string; value: any }) => {
       const { error } = await supabase
         .from("site_settings")
-        .update({ value } as any)
-        .eq("key", key);
+        .upsert({ key, value } as any, { onConflict: "key" });
       if (error) throw error;
     },
     onSuccess: () => {
