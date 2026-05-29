@@ -1,5 +1,6 @@
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
+import { logActivity } from "@/lib/activityLog";
 
 export interface HeroSettings {
   title: string;
@@ -93,6 +94,12 @@ export const useUpdateSiteSetting = () => {
         .from("site_settings")
         .upsert({ key, value } as any, { onConflict: "key" });
       if (error) throw error;
+      logActivity({
+        action: key === "deals" ? "deals_updated" : "site_setting_updated",
+        entity_type: "site_setting",
+        entity_id: key,
+        details: Array.isArray(value) ? { count: value.length } : {},
+      });
     },
     onSuccess: () => {
       qc.invalidateQueries({ queryKey: ["site_settings"] });
