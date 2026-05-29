@@ -8,6 +8,7 @@ import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { LogIn, Loader2, UserPlus, Mail } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { logActivity } from "@/lib/activityLog";
 
 type Mode = "login" | "signup" | "forgot";
 
@@ -29,6 +30,12 @@ const AdminLogin = () => {
         redirectTo: `${window.location.origin}/reset-password`,
       });
       setLoading(false);
+      logActivity({
+        action: "password_reset_requested",
+        user_email: email,
+        status: error ? "failed" : "success",
+        details: error ? { error: error.message } : {},
+      });
       if (error) {
         toast({ title: "Error", description: error.message, variant: "destructive" });
       } else {
@@ -41,6 +48,12 @@ const AdminLogin = () => {
     if (mode === "signup") {
       const { error } = await supabase.auth.signUp({ email, password });
       setLoading(false);
+      logActivity({
+        action: "signup",
+        user_email: email,
+        status: error ? "failed" : "success",
+        details: error ? { error: error.message } : {},
+      });
       if (error) {
         toast({ title: "Signup failed", description: error.message, variant: "destructive" });
       } else {
@@ -52,6 +65,12 @@ const AdminLogin = () => {
 
     const { error } = await signIn(email, password);
     setLoading(false);
+    logActivity({
+      action: error ? "login_failed" : "login_success",
+      user_email: email,
+      status: error ? "failed" : "success",
+      details: error ? { error: error.message } : {},
+    });
     if (error) {
       const msg = error.message.toLowerCase();
       if (msg.includes("invalid login credentials") || msg.includes("invalid_credentials")) {
