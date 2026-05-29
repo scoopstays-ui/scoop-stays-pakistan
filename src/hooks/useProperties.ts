@@ -2,6 +2,7 @@ import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 import { Property } from "@/data/properties";
 import { resolveImageUrl } from "@/lib/assetMap";
+import { logActivity } from "@/lib/activityLog";
 
 type DbRow = {
   id: string; name: string; city: string; province: string; price: number;
@@ -57,6 +58,12 @@ export const useCreateProperty = () => {
     mutationFn: async (property: Record<string, any>) => {
       const { error } = await supabase.from("properties").insert(property as any);
       if (error) throw error;
+      logActivity({
+        action: "property_created",
+        entity_type: "property",
+        entity_id: property.id,
+        details: { name: property.name, city: property.city, price: property.price },
+      });
     },
     onSuccess: () => qc.invalidateQueries({ queryKey: ["properties"] }),
   });
@@ -68,6 +75,12 @@ export const useUpdateProperty = () => {
     mutationFn: async ({ id, ...updates }: { id: string; [key: string]: any }) => {
       const { error } = await supabase.from("properties").update(updates as any).eq("id", id);
       if (error) throw error;
+      logActivity({
+        action: "property_updated",
+        entity_type: "property",
+        entity_id: id,
+        details: { fields: Object.keys(updates) },
+      });
     },
     onSuccess: () => qc.invalidateQueries({ queryKey: ["properties"] }),
   });
@@ -79,6 +92,11 @@ export const useDeleteProperty = () => {
     mutationFn: async (id: string) => {
       const { error } = await supabase.from("properties").delete().eq("id", id);
       if (error) throw error;
+      logActivity({
+        action: "property_deleted",
+        entity_type: "property",
+        entity_id: id,
+      });
     },
     onSuccess: () => qc.invalidateQueries({ queryKey: ["properties"] }),
   });
