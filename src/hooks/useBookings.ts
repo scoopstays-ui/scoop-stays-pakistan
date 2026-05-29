@@ -1,5 +1,6 @@
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
+import { logActivity } from "@/lib/activityLog";
 
 export interface Booking {
   id: string;
@@ -58,6 +59,12 @@ export const useUpdateBookingStatus = () => {
         .update({ status } as any)
         .eq("id", id);
       if (error) throw error;
+      logActivity({
+        action: "booking_status_updated",
+        entity_type: "booking",
+        entity_id: id,
+        details: { status },
+      });
     },
     onSuccess: () => qc.invalidateQueries({ queryKey: ["bookings"] }),
   });
@@ -69,6 +76,11 @@ export const useDeleteBooking = () => {
     mutationFn: async (id: string) => {
       const { error } = await supabase.from("bookings").delete().eq("id", id);
       if (error) throw error;
+      logActivity({
+        action: "booking_deleted",
+        entity_type: "booking",
+        entity_id: id,
+      });
     },
     onSuccess: () => qc.invalidateQueries({ queryKey: ["bookings"] }),
   });

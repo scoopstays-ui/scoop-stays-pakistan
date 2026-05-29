@@ -25,6 +25,7 @@ import AdminProperties from "./pages/admin/AdminProperties";
 import AdminPropertyForm from "./pages/admin/AdminPropertyForm";
 import AdminBookings from "./pages/admin/AdminBookings";
 import AdminCMS from "./pages/admin/AdminCMS";
+import AdminActivity from "./pages/admin/AdminActivity";
 import ResetPassword from "./pages/admin/ResetPassword";
 
 const queryClient = new QueryClient();
@@ -58,6 +59,7 @@ const App = () => (
                 <Route path="properties/edit/:id" element={<AdminPropertyForm />} />
                 <Route path="bookings" element={<AdminBookings />} />
                 <Route path="cms" element={<AdminCMS />} />
+                <Route path="activity" element={<AdminActivity />} />
               </Route>
               <Route path="/:slug" element={<SeoLanding />} />
               <Route path="*" element={<NotFound />} />
