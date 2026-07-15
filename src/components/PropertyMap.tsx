@@ -42,7 +42,7 @@ interface PropertyMapProps {
 
 const PropertyMap = ({ properties }: PropertyMapProps) => {
   return (
-    <div className="rounded-xl overflow-hidden shadow-card border border-border h-[600px]">
+    <div className="rounded-xl overflow-hidden shadow-card border border-border h-[420px] sm:h-[520px] lg:h-[600px]">
       <MapContainer
         center={[30.5, 69.5]}
         zoom={5}

@@ -222,16 +222,16 @@ const AdminPropertyForm = () => {
   return (
     <div className="max-w-4xl mx-auto space-y-6 pb-8">
       {/* Header */}
-      <div className="flex items-center justify-between">
-        <div className="flex items-center gap-3">
+      <div className="flex items-center justify-between gap-3">
+        <div className="flex items-center gap-2 sm:gap-3 min-w-0">
           <Button variant="ghost" size="icon" onClick={() => navigate("/admin/properties")}>
             <ArrowLeft className="w-5 h-5" />
           </Button>
-          <div>
-            <h2 className="font-display text-2xl font-bold text-foreground">
+          <div className="min-w-0">
+            <h2 className="font-display text-xl sm:text-2xl font-bold text-foreground truncate">
               {isEdit ? "Edit Property" : "Add New Property"}
             </h2>
-            <p className="text-sm text-muted-foreground">
+            <p className="text-xs sm:text-sm text-muted-foreground hidden sm:block">
               {isEdit ? "Update the property details below" : "Fill in the details to list a new property"}
             </p>
           </div>
@@ -244,11 +244,11 @@ const AdminPropertyForm = () => {
 
       <form onSubmit={handleSubmit}>
         <Tabs defaultValue="details" className="space-y-6">
-          <TabsList className="grid w-full grid-cols-4">
-            <TabsTrigger value="details" className="gap-2"><Info className="w-4 h-4 hidden sm:block" /> Details</TabsTrigger>
-            <TabsTrigger value="images" className="gap-2"><ImageIcon className="w-4 h-4 hidden sm:block" /> Images</TabsTrigger>
-            <TabsTrigger value="amenities" className="gap-2"><Wifi className="w-4 h-4 hidden sm:block" /> Amenities</TabsTrigger>
-            <TabsTrigger value="location" className="gap-2"><MapPin className="w-4 h-4 hidden sm:block" /> Location</TabsTrigger>
+          <TabsList className="grid w-full grid-cols-4 h-auto">
+            <TabsTrigger value="details" className="gap-2 text-xs sm:text-sm px-1 sm:px-3"><Info className="w-4 h-4 hidden sm:block" /> Details</TabsTrigger>
+            <TabsTrigger value="images" className="gap-2 text-xs sm:text-sm px-1 sm:px-3"><ImageIcon className="w-4 h-4 hidden sm:block" /> Images</TabsTrigger>
+            <TabsTrigger value="amenities" className="gap-2 text-xs sm:text-sm px-1 sm:px-3"><Wifi className="w-4 h-4 hidden sm:block" /> Amenities</TabsTrigger>
+            <TabsTrigger value="location" className="gap-2 text-xs sm:text-sm px-1 sm:px-3"><MapPin className="w-4 h-4 hidden sm:block" /> Location</TabsTrigger>
           </TabsList>
 
           {/* ── DETAILS TAB ── */}

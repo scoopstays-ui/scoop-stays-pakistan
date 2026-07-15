@@ -23,8 +23,8 @@ const socialLinks = [
 const Footer = () => {
   return (
     <footer className="bg-primary text-primary-foreground">
-      <div className="container mx-auto px-4 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+      <div className="container mx-auto px-4 lg:px-8 py-12 md:py-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 md:gap-12">
           {/* Brand */}
           <div>
             <h3 className="font-display text-2xl font-bold mb-4">Scoop<span className="text-accent">Stays</span></h3>
@@ -83,8 +83,8 @@ const Footer = () => {
               <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-accent transition-colors">
                 <Phone className="w-4 h-4" /> +92 316 5648659
               </a>
-              <a href="mailto:scoopstays@gmail.com" className="flex items-center gap-2 hover:text-accent transition-colors">
-                <Mail className="w-4 h-4" /> scoopstays@gmail.com
+              <a href="mailto:scoopstays@gmail.com" className="flex items-center gap-2 hover:text-accent transition-colors break-all">
+                <Mail className="w-4 h-4 shrink-0" /> scoopstays@gmail.com
               </a>
               <span className="flex items-center gap-2">
                 <MapPin className="w-4 h-4" /> Pakistan

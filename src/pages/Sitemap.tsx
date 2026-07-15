@@ -14,9 +14,9 @@ const Sitemap = () => {
 
       <Header />
 
-      <main className="min-h-screen py-16">
+      <main className="min-h-screen pt-28 pb-16">
         <div className="container mx-auto px-4">
-          <h1 className="font-display text-4xl md:text-5xl font-bold text-primary mb-4 text-center">
+          <h1 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-primary mb-4 text-center">
             All Locations & Stays
           </h1>
           <p className="text-muted-foreground text-center mb-12 max-w-2xl mx-auto">
@@ -25,7 +25,7 @@ const Sitemap = () => {
 
           {seoLocations.map((location) => (
             <div key={location.slug} className="mb-12">
-              <h2 className="font-display text-2xl font-bold text-primary mb-4 border-b border-border pb-2">
+              <h2 className="font-display text-xl sm:text-2xl font-bold text-primary mb-4 border-b border-border pb-2">
                 {location.name}
               </h2>
               <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">

@@ -61,13 +61,13 @@ const AdminBookings = () => {
         Booking Requests ({bookings.length})
       </h2>
 
-      <div className="flex flex-col sm:flex-row gap-3">
-        <div className="relative flex-1 max-w-sm">
+      <div className="flex flex-col sm:flex-row gap-3 flex-wrap">
+        <div className="relative flex-1 min-w-0 sm:max-w-sm">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
           <Input placeholder="Search bookings..." value={search} onChange={(e) => setSearch(e.target.value)} className="pl-9" />
         </div>
         <Select value={statusFilter} onValueChange={setStatusFilter}>
-          <SelectTrigger className="w-[160px]">
+          <SelectTrigger className="w-full sm:w-[160px]">
             <SelectValue />
           </SelectTrigger>
           <SelectContent>
@@ -80,16 +80,16 @@ const AdminBookings = () => {
         </Select>
       </div>
 
-      <div className="rounded-lg border bg-card overflow-x-auto">
-        <Table>
+      <div className="rounded-lg border bg-card overflow-x-auto -mx-4 sm:mx-0 max-w-[100vw]">
+        <Table className="min-w-[720px]">
           <TableHeader>
             <TableRow>
               <TableHead>Guest</TableHead>
               <TableHead>Property</TableHead>
-              <TableHead>Dates</TableHead>
-              <TableHead>Guests</TableHead>
+              <TableHead className="hidden md:table-cell">Dates</TableHead>
+              <TableHead className="hidden sm:table-cell">Guests</TableHead>
               <TableHead>Status</TableHead>
-              <TableHead>Date</TableHead>
+              <TableHead className="hidden lg:table-cell">Date</TableHead>
               <TableHead className="text-right">Actions</TableHead>
             </TableRow>
           </TableHeader>
@@ -99,7 +99,7 @@ const AdminBookings = () => {
                 <TableCell>
                   <div className="space-y-0.5">
                     <div className="font-medium flex items-center gap-1">
-                      <User className="w-3 h-3" /> {b.guest_name}
+                      <User className="w-3 h-3 shrink-0" /> <span className="truncate max-w-[140px]">{b.guest_name}</span>
                     </div>
                     {b.phone && (
                       <div className="text-xs text-muted-foreground flex items-center gap-1">
@@ -107,12 +107,12 @@ const AdminBookings = () => {
                       </div>
                     )}
                     {b.email && (
-                      <div className="text-xs text-muted-foreground">{b.email}</div>
+                      <div className="text-xs text-muted-foreground truncate max-w-[180px]">{b.email}</div>
                     )}
                   </div>
                 </TableCell>
                 <TableCell className="max-w-[180px] truncate">{b.property_name}</TableCell>
-                <TableCell>
+                <TableCell className="hidden md:table-cell">
                   {b.check_in && b.check_out ? (
                     <div className="text-xs flex items-center gap-1">
                       <Calendar className="w-3 h-3" />
@@ -122,7 +122,7 @@ const AdminBookings = () => {
                     <span className="text-xs text-muted-foreground">Not specified</span>
                   )}
                 </TableCell>
-                <TableCell>{b.guests}</TableCell>
+                <TableCell className="hidden sm:table-cell">{b.guests}</TableCell>
                 <TableCell>
                   <Select value={b.status} onValueChange={(val) => handleStatusChange(b.id, val)}>
                     <SelectTrigger className="h-7 w-[120px]">
@@ -138,7 +138,7 @@ const AdminBookings = () => {
                     </SelectContent>
                   </Select>
                 </TableCell>
-                <TableCell className="text-xs text-muted-foreground">
+                <TableCell className="hidden lg:table-cell text-xs text-muted-foreground">
                   {format(new Date(b.created_at), "MMM d, yyyy")}
                 </TableCell>
                 <TableCell className="text-right">

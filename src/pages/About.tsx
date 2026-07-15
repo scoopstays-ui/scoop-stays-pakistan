@@ -11,32 +11,31 @@ const About = () => {
       <Header />
 
       {/* Hero */}
-      <div className="pt-24 pb-16 bg-primary">
+      <div className="pt-28 pb-12 md:pb-16 bg-primary">
         <div className="container mx-auto px-4 lg:px-8 text-center">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
             <p className="text-accent font-medium tracking-widest uppercase text-sm mb-2">Who We Are</p>
-            <h1 className="font-display text-3xl md:text-5xl font-bold text-primary-foreground mb-6">About ScoopStays</h1>
-            <p className="text-primary-foreground/70 max-w-2xl mx-auto text-lg leading-relaxed">
+            <h1 className="font-display text-2xl sm:text-3xl md:text-5xl font-bold text-primary-foreground mb-6">About ScoopStays</h1>
+            <p className="text-primary-foreground/70 max-w-2xl mx-auto text-base md:text-lg leading-relaxed">
               ScoopStays is a short-term rental platform in Pakistan offering comfortable and premium stays across major cities and tourist destinations.
             </p>
           </motion.div>
         </div>
       </div>
 
-      {/* About Content */}
-      <section className="py-20">
+      <section className="py-14 md:py-20">
         <div className="container mx-auto px-4 lg:px-8 max-w-4xl">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-            <p className="text-foreground/80 text-lg leading-relaxed mb-6">
+            <p className="text-foreground/80 text-base md:text-lg leading-relaxed mb-6">
               We provide fully furnished apartments, vacation homes, and luxury properties for travelers, families, and business guests.
             </p>
-            <p className="text-foreground/80 text-lg leading-relaxed mb-12">
+            <p className="text-foreground/80 text-base md:text-lg leading-relaxed mb-10 md:mb-12">
               Our goal is to provide a smooth booking experience, reliable service, and high-quality accommodation across Pakistan.
             </p>
           </motion.div>
 
           {/* Values */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-20">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6 mb-16 md:mb-20">
             {[
               { icon: Shield, title: "Premium Verified Properties", desc: "Every property is personally vetted for quality, cleanliness, and hospitality standards." },
               { icon: MessageSquare, title: "Easy WhatsApp Booking", desc: "Book your stay instantly through WhatsApp for a seamless experience." },
@@ -67,14 +66,14 @@ const About = () => {
       </section>
 
       {/* Property Management Section */}
-      <section className="py-20 bg-card">
+      <section className="py-14 md:py-20 bg-card">
         <div className="container mx-auto px-4 lg:px-8 max-w-4xl">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-12">
             <p className="text-accent font-medium tracking-widest uppercase text-sm mb-2">For Property Owners</p>
-            <h2 className="font-display text-3xl md:text-4xl font-bold text-card-foreground mb-4">
+            <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-card-foreground mb-4">
               List Your Property With ScoopStays
             </h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto text-lg leading-relaxed">
+            <p className="text-muted-foreground max-w-2xl mx-auto text-base md:text-lg leading-relaxed">
               If you own an apartment, house, or farmhouse, ScoopStays can help you earn passive income through short-term rentals. We provide full property management services without you managing day-to-day operations.
             </p>
           </motion.div>

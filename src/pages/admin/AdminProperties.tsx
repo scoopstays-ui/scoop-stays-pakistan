@@ -73,20 +73,20 @@ const AdminProperties = () => {
       </div>
 
       {/* Filters */}
-      <div className="flex flex-col sm:flex-row gap-3">
-        <div className="relative flex-1 max-w-sm">
+      <div className="flex flex-col sm:flex-row gap-3 flex-wrap">
+        <div className="relative flex-1 min-w-0 sm:max-w-sm">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
           <Input placeholder="Search by name or city..." value={search} onChange={(e) => setSearch(e.target.value)} className="pl-9" />
         </div>
         <Select value={typeFilter} onValueChange={setTypeFilter}>
-          <SelectTrigger className="w-[160px]"><SelectValue placeholder="All Types" /></SelectTrigger>
+          <SelectTrigger className="w-full sm:w-[160px]"><SelectValue placeholder="All Types" /></SelectTrigger>
           <SelectContent>
             <SelectItem value="all">All Types</SelectItem>
             {types.map((t) => <SelectItem key={t} value={t}>{t}</SelectItem>)}
           </SelectContent>
         </Select>
         <Select value={cityFilter} onValueChange={setCityFilter}>
-          <SelectTrigger className="w-[180px]"><SelectValue placeholder="All Cities" /></SelectTrigger>
+          <SelectTrigger className="w-full sm:w-[180px]"><SelectValue placeholder="All Cities" /></SelectTrigger>
           <SelectContent>
             <SelectItem value="all">All Cities</SelectItem>
             {cities.map((c) => <SelectItem key={c} value={c}>{c}</SelectItem>)}
@@ -95,8 +95,8 @@ const AdminProperties = () => {
       </div>
 
       {/* Table */}
-      <div className="rounded-lg border bg-card overflow-x-auto">
-        <Table>
+      <div className="rounded-lg border bg-card overflow-x-auto -mx-4 sm:mx-0 max-w-[100vw]">
+        <Table className="min-w-[640px]">
           <TableHeader>
             <TableRow>
               <TableHead className="w-16">Image</TableHead>

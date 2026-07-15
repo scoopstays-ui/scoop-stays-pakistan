@@ -60,22 +60,22 @@ const SeoLanding = () => {
 
       <main className="min-h-screen">
         {/* Hero */}
-        <section className="bg-primary text-primary-foreground py-20 md:py-28">
+        <section className="bg-primary text-primary-foreground py-16 sm:py-20 md:py-28 pt-28 md:pt-32">
           <div className="container mx-auto px-4 text-center max-w-4xl">
             <div className="inline-block bg-accent/20 text-accent-foreground px-4 py-1.5 rounded-full text-sm font-medium mb-6">
               {location.name}, {location.province}
             </div>
-            <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
+            <h1 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 break-words">
               {page.h1}
             </h1>
-            <p className="text-lg md:text-xl opacity-90 mb-8 max-w-2xl mx-auto">
+            <p className="text-base sm:text-lg md:text-xl opacity-90 mb-8 max-w-2xl mx-auto">
               Discover premium {propertyType.plural.toLowerCase()} in {location.name}. ScoopStays offers verified, professionally managed properties for families, couples, and business travelers.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button asChild size="lg" variant="accent" className="text-base">
+              <Button asChild size="lg" variant="accent" className="text-base w-full sm:w-auto">
                 <Link to="/properties">Browse Properties</Link>
               </Button>
-              <Button asChild size="lg" variant="outline" className="text-base border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10">
+              <Button asChild size="lg" variant="outline" className="text-base w-full sm:w-auto border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10">
                 <a href={WHATSAPP_BOOKING_URL} target="_blank" rel="noopener noreferrer">
                   <MessageCircle className="w-5 h-5 mr-2" /> Book on WhatsApp
                 </a>
@@ -85,9 +85,9 @@ const SeoLanding = () => {
         </section>
 
         {/* Introduction */}
-        <section className="py-16 md:py-20">
+        <section className="py-12 md:py-16 lg:py-20">
           <div className="container mx-auto px-4 max-w-4xl">
-            <h2 className="font-display text-3xl md:text-4xl font-bold text-primary mb-6">
+            <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-primary mb-6">
               About {location.name} — A Top Destination in Pakistan
             </h2>
             <div className="prose prose-lg max-w-none text-muted-foreground space-y-4">
@@ -106,9 +106,9 @@ const SeoLanding = () => {
         </section>
 
         {/* Featured Properties */}
-        <section className="py-16 bg-secondary">
+        <section className="py-12 md:py-16 bg-secondary">
           <div className="container mx-auto px-4">
-            <h2 className="font-display text-3xl md:text-4xl font-bold text-primary mb-4 text-center">
+            <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-primary mb-4 text-center">
               Featured {propertyType.plural} in {location.name}
             </h2>
             <p className="text-muted-foreground text-center mb-10 max-w-2xl mx-auto">
@@ -116,7 +116,7 @@ const SeoLanding = () => {
             </p>
 
             {matchedProperties.length > 0 ? (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
                 {matchedProperties.map((property, index) => (
                   <PropertyCard key={property.id} property={property} index={index} />
                 ))}
@@ -141,15 +141,15 @@ const SeoLanding = () => {
         </section>
 
         {/* Why Choose ScoopStays */}
-        <section className="py-16 md:py-20">
+        <section className="py-12 md:py-16 lg:py-20">
           <div className="container mx-auto px-4">
-            <h2 className="font-display text-3xl md:text-4xl font-bold text-primary mb-4 text-center">
+            <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-primary mb-4 text-center">
               Why Choose ScoopStays in {location.name}
             </h2>
             <p className="text-muted-foreground text-center mb-12 max-w-2xl mx-auto">
               We make finding and booking {propertyType.plural.toLowerCase()} simple, reliable, and stress-free.
             </p>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
               {benefits.map((benefit, i) => (
                 <div key={i} className="bg-card p-6 rounded-xl border hover:shadow-lg transition-shadow">
                   <benefit.icon className="w-10 h-10 text-accent mb-4" />
@@ -163,9 +163,9 @@ const SeoLanding = () => {
 
         {/* Things to Do Nearby */}
         {location.attractions.length > 0 && (
-          <section className="py-16 bg-secondary">
+          <section className="py-12 md:py-16 bg-secondary">
             <div className="container mx-auto px-4">
-              <h2 className="font-display text-3xl md:text-4xl font-bold text-primary mb-4 text-center">
+              <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-primary mb-4 text-center">
                 Things to Do in {location.name}
               </h2>
               <p className="text-muted-foreground text-center mb-10 max-w-2xl mx-auto">
@@ -251,21 +251,21 @@ const SeoLanding = () => {
         </section>
 
         {/* CTA */}
-        <section className="py-20 bg-primary text-primary-foreground">
+        <section className="py-14 md:py-20 bg-primary text-primary-foreground">
           <div className="container mx-auto px-4 text-center max-w-3xl">
-            <h2 className="font-display text-3xl md:text-4xl font-bold mb-4">
+            <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold mb-4">
               Book Your Stay in {location.name} Today
             </h2>
-            <p className="text-lg opacity-90 mb-8">
+            <p className="text-base sm:text-lg opacity-90 mb-8">
               Find the perfect {propertyType.name.toLowerCase()} in {location.name}. Book instantly through WhatsApp — no apps, no complicated forms.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button asChild size="lg" variant="accent" className="text-base">
+              <Button asChild size="lg" variant="accent" className="text-base w-full sm:w-auto">
                 <a href={WHATSAPP_BOOKING_URL} target="_blank" rel="noopener noreferrer">
                   <MessageCircle className="w-5 h-5 mr-2" /> Book via WhatsApp
                 </a>
               </Button>
-              <Button asChild size="lg" variant="outline" className="text-base border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10">
+              <Button asChild size="lg" variant="outline" className="text-base w-full sm:w-auto border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10">
                 <Link to="/properties">Browse All Properties</Link>
               </Button>
             </div>

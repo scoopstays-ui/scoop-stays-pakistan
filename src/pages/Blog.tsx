@@ -21,7 +21,7 @@ const Blog = () => {
             <h1 className="font-display text-3xl md:text-4xl font-bold text-foreground">ScoopStays Blog</h1>
             <p className="text-muted-foreground mt-2 max-w-xl mx-auto">Destination guides, travel tips, and insider knowledge for your next trip across Pakistan.</p>
           </motion.div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             {blogPosts.map((post, i) => (
               <motion.div
                 key={post.slug}
