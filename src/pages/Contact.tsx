@@ -26,17 +26,17 @@ const Contact = () => {
     <div className="min-h-screen bg-background">
       <Header />
 
-      <div className="pt-24 pb-20">
+      <div className="pt-24 pb-16 md:pb-20">
         <div className="container mx-auto px-4 lg:px-8">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-center mb-12">
             <p className="text-accent font-medium tracking-widest uppercase text-sm mb-2">Get in Touch</p>
             <h1 className="font-display text-3xl md:text-4xl font-bold text-foreground">Contact Us</h1>
           </motion.div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-5xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12 max-w-5xl mx-auto">
             {/* Info */}
             <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.1 }}>
-              <h2 className="font-display text-2xl font-semibold text-foreground mb-6">We'd love to hear from you</h2>
+              <h2 className="font-display text-xl sm:text-2xl font-semibold text-foreground mb-6">We'd love to hear from you</h2>
               <p className="text-muted-foreground mb-8 leading-relaxed">
                 Whether you're looking for your next stay or want to list your property with ScoopStays, reach out and we'll get back to you within 24 hours.
               </p>
@@ -96,7 +96,7 @@ const Contact = () => {
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.2 }}
               onSubmit={handleSubmit}
-              className="bg-card rounded-xl p-8 shadow-card"
+              className="bg-card rounded-xl p-6 sm:p-8 shadow-card"
             >
               <div className="space-y-5">
                 {[

@@ -62,14 +62,16 @@ const AdminCMS = () => {
       </div>
 
       <Tabs defaultValue="hero" className="space-y-6">
-        <TabsList className="grid w-full grid-cols-3 sm:grid-cols-6">
-          <TabsTrigger value="hero" className="gap-1"><Type className="w-3 h-3 hidden sm:block" /> Hero</TabsTrigger>
-          <TabsTrigger value="stats" className="gap-1"><BarChart3 className="w-3 h-3 hidden sm:block" /> Stats</TabsTrigger>
-          <TabsTrigger value="deals" className="gap-1"><Tag className="w-3 h-3 hidden sm:block" /> Deals</TabsTrigger>
-          <TabsTrigger value="contact" className="gap-1"><Phone className="w-3 h-3 hidden sm:block" /> Contact</TabsTrigger>
-          <TabsTrigger value="testimonials" className="gap-1"><Quote className="w-3 h-3 hidden sm:block" /> Reviews</TabsTrigger>
-          <TabsTrigger value="cta" className="gap-1"><Megaphone className="w-3 h-3 hidden sm:block" /> CTA</TabsTrigger>
-        </TabsList>
+        <div className="w-full overflow-x-auto -mx-4 sm:mx-0 px-4 sm:px-0">
+          <TabsList className="inline-flex sm:grid sm:w-full sm:grid-cols-6 min-w-max sm:min-w-0">
+            <TabsTrigger value="hero" className="gap-1"><Type className="w-3 h-3" /> Hero</TabsTrigger>
+            <TabsTrigger value="stats" className="gap-1"><BarChart3 className="w-3 h-3" /> Stats</TabsTrigger>
+            <TabsTrigger value="deals" className="gap-1"><Tag className="w-3 h-3" /> Deals</TabsTrigger>
+            <TabsTrigger value="contact" className="gap-1"><Phone className="w-3 h-3" /> Contact</TabsTrigger>
+            <TabsTrigger value="testimonials" className="gap-1"><Quote className="w-3 h-3" /> Reviews</TabsTrigger>
+            <TabsTrigger value="cta" className="gap-1"><Megaphone className="w-3 h-3" /> CTA</TabsTrigger>
+          </TabsList>
+        </div>
 
         {/* Hero Section */}
         <TabsContent value="hero" className="space-y-4">

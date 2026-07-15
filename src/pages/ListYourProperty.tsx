@@ -50,26 +50,26 @@ const ListYourProperty = () => {
       <Header />
 
       {/* Hero */}
-      <section className="pt-28 pb-16 bg-primary">
+      <section className="pt-28 pb-12 md:pb-16 bg-primary">
         <div className="container mx-auto px-4 text-center">
-          <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="font-display text-3xl md:text-5xl font-bold text-primary-foreground mb-4">
+          <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="font-display text-2xl sm:text-3xl md:text-5xl font-bold text-primary-foreground mb-4">
             Earn Passive Income with <span className="text-accent">ScoopStays</span>
           </motion.h1>
-          <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2 }} className="text-primary-foreground/60 max-w-2xl mx-auto text-lg">
+          <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2 }} className="text-primary-foreground/60 max-w-2xl mx-auto text-base md:text-lg">
             List your apartment, house, or farmhouse and let us handle everything — from marketing to guest management.
           </motion.p>
         </div>
       </section>
 
       {/* Calculator */}
-      <section className="py-16 bg-background">
+      <section className="py-12 md:py-16 bg-background">
         <div className="container mx-auto px-4 max-w-2xl">
-          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="bg-card rounded-2xl p-8 shadow-elevated">
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="bg-card rounded-2xl p-6 sm:p-8 shadow-elevated">
             <div className="flex items-center gap-3 mb-6">
               <div className="w-10 h-10 rounded-full bg-accent/10 flex items-center justify-center">
                 <Calculator className="w-5 h-5 text-accent" />
               </div>
-              <h2 className="font-display text-2xl font-bold text-card-foreground">Earnings Calculator</h2>
+              <h2 className="font-display text-xl sm:text-2xl font-bold text-card-foreground">Earnings Calculator</h2>
             </div>
             <div className="space-y-4">
               <div>
@@ -116,10 +116,10 @@ const ListYourProperty = () => {
       </section>
 
       {/* Services */}
-      <section className="py-16 bg-card">
+      <section className="py-12 md:py-16 bg-card">
         <div className="container mx-auto px-4 lg:px-8 text-center">
-          <h2 className="font-display text-3xl font-bold text-card-foreground mb-12">What We Handle For You</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <h2 className="font-display text-2xl sm:text-3xl font-bold text-card-foreground mb-10 md:mb-12">What We Handle For You</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             {[
               { icon: Home, title: "Listing & Marketing", desc: "Professional photography, listing creation, and marketing across platforms." },
               { icon: Users, title: "Guest Management", desc: "We handle all guest communication, check-ins, and support 24/7." },
@@ -141,9 +141,9 @@ const ListYourProperty = () => {
       </section>
 
       {/* CTA */}
-      <section className="py-20 bg-primary">
+      <section className="py-14 md:py-20 bg-primary">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="font-display text-3xl font-bold text-primary-foreground mb-4">Ready to Start Earning?</h2>
+          <h2 className="font-display text-2xl sm:text-3xl font-bold text-primary-foreground mb-4">Ready to Start Earning?</h2>
           <p className="text-primary-foreground/60 max-w-xl mx-auto mb-8">Contact us on WhatsApp to list your property with ScoopStays. No hassle, full management.</p>
           <Button variant="accent" size="lg" asChild>
             <a href={whatsappListUrl} target="_blank" rel="noopener noreferrer">
