@@ -62,7 +62,7 @@ const HeroSearch = () => {
           </div>
         </div>
 
-        <Button variant="accent" className="h-full min-h-[56px] text-base font-semibold" onClick={handleSearch}>
+        <Button variant="accent" className="w-full h-full min-h-[52px] md:min-h-[56px] text-base font-semibold" onClick={handleSearch}>
           <Search className="w-5 h-5 mr-2" />
           Search Stays
         </Button>

@@ -53,7 +53,7 @@ const PropertyDetail = () => {
     <div className="min-h-screen bg-background">
       <Header />
 
-      <div className="pt-24 pb-20">
+      <div className="pt-24 pb-24 md:pb-20">
         <div className="container mx-auto px-4 lg:px-8">
           <Link to="/properties" className="inline-flex items-center gap-1 text-muted-foreground hover:text-accent transition-colors text-sm mb-6">
             <ChevronLeft className="w-4 h-4" /> Back to Properties
@@ -61,10 +61,10 @@ const PropertyDetail = () => {
 
           {/* Gallery */}
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="mb-10">
-            <div className="rounded-xl overflow-hidden aspect-[16/9] mb-3">
+            <div className="rounded-xl overflow-hidden aspect-[4/3] sm:aspect-[16/9] mb-3">
               <PropertyImage src={property.images[selectedImage]} alt={property.name} className="w-full h-full object-cover" />
             </div>
-            <div className="grid grid-cols-3 gap-3">
+            <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-2 sm:gap-3">
               {property.images.map((img, i) => (
                 <button
                   key={i}
@@ -91,7 +91,7 @@ const PropertyDetail = () => {
                     <Shield className="w-3.5 h-3.5" /> Verified
                   </span>
                 </div>
-                <h1 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-3">{property.name}</h1>
+                <h1 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-3 break-words">{property.name}</h1>
                 <div className="flex items-center gap-4 text-sm text-muted-foreground mb-6 flex-wrap">
                   <span className="flex items-center gap-1"><Star className="w-4 h-4 text-accent fill-accent" /> {property.rating} ({property.reviews} reviews)</span>
                   <span className="flex items-center gap-1"><Users className="w-4 h-4" /> {property.guests} guests</span>
@@ -101,8 +101,8 @@ const PropertyDetail = () => {
 
                 <p className="text-foreground/80 leading-relaxed mb-8">{property.description}</p>
 
-                <h2 className="font-display text-2xl font-semibold text-foreground mb-4">Amenities</h2>
-                <div className="grid grid-cols-2 md:grid-cols-3 gap-3 mb-10">
+                <h2 className="font-display text-xl sm:text-2xl font-semibold text-foreground mb-4">Amenities</h2>
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 mb-10">
                   {property.amenities.map((a) => (
                     <div key={a} className="flex items-center gap-2 text-sm text-foreground/80">
                       <Check className="w-4 h-4 text-accent" /> {a}
@@ -112,7 +112,7 @@ const PropertyDetail = () => {
 
                 {property.googleMapsEmbed && (
                   <>
-                    <h2 className="font-display text-2xl font-semibold text-foreground mb-4">Location</h2>
+                    <h2 className="font-display text-xl sm:text-2xl font-semibold text-foreground mb-4">Location</h2>
                     <div className="rounded-xl overflow-hidden mb-10 aspect-video">
                       <iframe
                         src={property.googleMapsEmbed}
@@ -128,7 +128,7 @@ const PropertyDetail = () => {
                   </>
                 )}
 
-                <h2 className="font-display text-2xl font-semibold text-foreground mb-4">Guest Reviews</h2>
+                <h2 className="font-display text-xl sm:text-2xl font-semibold text-foreground mb-4">Guest Reviews</h2>
                 <div className="space-y-4 mb-10">
                   {reviews.map((review, i) => (
                     <div key={i} className="bg-card rounded-xl p-5 shadow-card">
@@ -154,7 +154,7 @@ const PropertyDetail = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2 }}
-                className="bg-card rounded-xl p-6 shadow-elevated sticky top-28"
+                className="bg-card rounded-xl p-5 sm:p-6 shadow-elevated lg:sticky lg:top-28"
               >
                 <div className="mb-4">
                   <span className="text-2xl font-bold text-card-foreground">PKR {property.price.toLocaleString()}</span>

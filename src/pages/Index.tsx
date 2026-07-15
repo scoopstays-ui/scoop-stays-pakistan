@@ -45,28 +45,28 @@ const Index = () => {
       <Header />
 
       {/* Hero */}
-      <section className="relative h-screen min-h-[700px] flex items-center justify-center">
+      <section className="relative min-h-[600px] md:min-h-[700px] md:h-screen flex items-center justify-center py-24 md:py-0">
         <div className="absolute inset-0">
           <img src={hero.backgroundImage || heroBg} alt="Luxury stays across Pakistan" className="w-full h-full object-cover" />
           <div className="absolute inset-0 gradient-hero" />
         </div>
         <div className="relative z-10 container mx-auto px-4 text-center">
-          <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }} className="text-accent font-medium tracking-widest uppercase text-sm mb-4">
+          <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }} className="text-accent font-medium tracking-widest uppercase text-xs sm:text-sm mb-4">
             {hero.subtitle}
           </motion.p>
-          <motion.h1 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2, duration: 0.7 }} className="font-display text-4xl md:text-6xl lg:text-7xl font-bold text-primary-foreground mb-6 leading-tight">
+          <motion.h1 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2, duration: 0.7 }} className="font-display text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold text-primary-foreground mb-6 leading-tight">
             {hero.title} <br />
             <span className="text-accent">{hero.titleHighlight}</span>
           </motion.h1>
-          <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }} className="text-primary-foreground/70 text-lg md:text-xl max-w-2xl mx-auto mb-10">
+          <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }} className="text-primary-foreground/70 text-base md:text-xl max-w-2xl mx-auto mb-8 md:mb-10">
             {hero.description}
           </motion.p>
           <HeroSearch />
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.7 }} className="flex flex-col sm:flex-row gap-4 justify-center mt-6">
-            <Button variant="accent" size="lg" asChild>
+            <Button variant="accent" size="lg" className="w-full sm:w-auto" asChild>
               <Link to="/properties">Browse Properties</Link>
             </Button>
-            <Button variant="outline" size="lg" className="border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10" asChild>
+            <Button variant="outline" size="lg" className="w-full sm:w-auto border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10" asChild>
               <a href={whatsappUrl} target="_blank" rel="noopener noreferrer">
                 <MessageSquare className="w-4 h-4 mr-2" /> Book on WhatsApp
               </a>
@@ -76,13 +76,13 @@ const Index = () => {
       </section>
 
       {/* Stats */}
-      <section className="bg-card py-16">
+      <section className="bg-card py-12 md:py-16">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 text-center">
             {stats.map((stat, i) => (
               <motion.div key={stat.label} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}>
-                <div className="text-3xl md:text-4xl font-display font-bold text-accent">{stat.value}</div>
-                <div className="text-muted-foreground text-sm mt-1">{stat.label}</div>
+                <div className="text-2xl sm:text-3xl md:text-4xl font-display font-bold text-accent">{stat.value}</div>
+                <div className="text-muted-foreground text-xs sm:text-sm mt-1">{stat.label}</div>
               </motion.div>
             ))}
           </div>
@@ -90,13 +90,13 @@ const Index = () => {
       </section>
 
       {/* Limited Time Deals */}
-      <section className="py-20 bg-background">
+      <section className="py-14 md:py-20 bg-background">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="text-center mb-12">
             <p className="text-accent font-medium tracking-widest uppercase text-sm mb-2">Limited Time</p>
-            <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground">Special Deals & Offers</h2>
+            <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-foreground">Special Deals & Offers</h2>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {dealsWithProps.map((deal, i) => (
               <motion.div
                 key={deal.propertyId}
@@ -128,18 +128,18 @@ const Index = () => {
       </section>
 
       {/* Featured Properties */}
-      <section className="py-20 bg-card">
+      <section className="py-14 md:py-20 bg-card">
         <div className="container mx-auto px-4 lg:px-8">
-          <div className="flex items-end justify-between mb-12">
+          <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-10 md:mb-12">
             <div>
               <p className="text-accent font-medium tracking-widest uppercase text-sm mb-2">Handpicked</p>
-              <h2 className="font-display text-3xl md:text-4xl font-bold text-card-foreground">Featured Properties</h2>
+              <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-card-foreground">Featured Properties</h2>
             </div>
-            <Button variant="ghost" className="text-accent hover:text-accent/80" asChild>
+            <Button variant="ghost" className="text-accent hover:text-accent/80 self-start sm:self-auto" asChild>
               <Link to="/properties">View All <ArrowRight className="w-4 h-4 ml-1" /></Link>
             </Button>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             {featured.map((property, i) => (
               <PropertyCard key={property.id} property={property} index={i} />
             ))}
@@ -148,10 +148,10 @@ const Index = () => {
       </section>
 
       {/* Locations We Serve */}
-      <section className="py-20 bg-background">
+      <section className="py-14 md:py-20 bg-background">
         <div className="container mx-auto px-4 lg:px-8 text-center">
           <p className="text-accent font-medium tracking-widest uppercase text-sm mb-2">Where We Operate</p>
-          <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">Locations We Serve in Pakistan</h2>
+          <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-4">Locations We Serve in Pakistan</h2>
           <p className="text-muted-foreground mb-4">
             <Link to="/map-search" className="inline-flex items-center gap-2 text-accent hover:underline">
               <Map className="w-4 h-4" /> Explore on Map
@@ -174,11 +174,11 @@ const Index = () => {
       </section>
 
       {/* Why ScoopStays */}
-      <section className="py-20 bg-card">
+      <section className="py-14 md:py-20 bg-card">
         <div className="container mx-auto px-4 lg:px-8 text-center">
           <p className="text-accent font-medium tracking-widest uppercase text-sm mb-2">Why Choose Us</p>
-          <h2 className="font-display text-3xl md:text-4xl font-bold text-card-foreground mb-12">The ScoopStays Experience</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6">
+          <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-card-foreground mb-10 md:mb-12">The ScoopStays Experience</h2>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-6">
             {[
               { icon: Shield, title: "Premium Verified Properties" },
               { icon: MessageSquare, title: "Easy WhatsApp Booking" },
@@ -199,11 +199,11 @@ const Index = () => {
 
       {/* Testimonials */}
       {testimonials.length > 0 && (
-        <section className="py-20 bg-background">
+        <section className="py-14 md:py-20 bg-background">
           <div className="container mx-auto px-4 lg:px-8 text-center">
             <p className="text-accent font-medium tracking-widest uppercase text-sm mb-2">Guest Reviews</p>
-            <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-12">What Our Guests Say</h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-10 md:mb-12">What Our Guests Say</h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
               {testimonials.map((t, i) => (
                 <motion.div key={t.name} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.15 }} className="bg-card rounded-xl p-8 shadow-card text-left relative">
                   <Quote className="w-8 h-8 text-accent/20 absolute top-6 right-6" />
@@ -225,15 +225,15 @@ const Index = () => {
       )}
 
       {/* CTA */}
-      <section className="py-20 bg-primary">
+      <section className="py-14 md:py-20 bg-primary">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="font-display text-3xl md:text-4xl font-bold text-primary-foreground mb-6">{cta.title}</h2>
+          <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-primary-foreground mb-6">{cta.title}</h2>
           <p className="text-primary-foreground/60 max-w-xl mx-auto mb-8">{cta.description}</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button variant="accent" size="lg" asChild>
+            <Button variant="accent" size="lg" className="w-full sm:w-auto" asChild>
               <Link to="/properties">Browse Properties</Link>
             </Button>
-            <Button variant="outline" size="lg" className="border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10" asChild>
+            <Button variant="outline" size="lg" className="w-full sm:w-auto border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10" asChild>
               <a href={whatsappUrl} target="_blank" rel="noopener noreferrer">Book via WhatsApp</a>
             </Button>
           </div>
